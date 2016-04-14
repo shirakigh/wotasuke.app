@@ -14,6 +14,7 @@
                 <th><?= $this->Paginator->sort('password') ?></th>
                 <th><?= $this->Paginator->sort('created') ?></th>
                 <th><?= $this->Paginator->sort('modified') ?></th>
+                <th><?= $this->Paginator->sort('login_account') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -25,6 +26,7 @@
                 <td><?= h($user->password) ?></td>
                 <td><?= h($user->created) ?></td>
                 <td><?= h($user->modified) ?></td>
+                <td><?= h($user->login_account) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>

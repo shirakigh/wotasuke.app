@@ -51,6 +51,10 @@ class UsersTable extends Table
             ->requirePresence('password', 'create')
             ->notEmpty('password');
 
+        $validator
+            ->requirePresence('login_account', 'create')
+            ->notEmpty('login_account');
+
         return $validator;
     }
 }

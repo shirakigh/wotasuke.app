@@ -22,6 +22,7 @@ class UsersFixture extends TestFixture
         'password' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'login_account' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -42,8 +43,9 @@ class UsersFixture extends TestFixture
             'id' => 1,
             'name' => 'Lorem ipsum dolor sit amet',
             'password' => 'Lorem ipsum dolor sit amet',
-            'created' => '2016-04-14 15:40:30',
-            'modified' => '2016-04-14 15:40:30'
+            'created' => '2016-04-14 16:08:23',
+            'modified' => '2016-04-14 16:08:23',
+            'login_account' => 'Lorem ipsum dolor sit amet'
         ],
     ];
 }

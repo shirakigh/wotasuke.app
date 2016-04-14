@@ -19,6 +19,10 @@
             <td><?= h($user->password) ?></td>
         </tr>
         <tr>
+            <th><?= __('Login Account') ?></th>
+            <td><?= h($user->login_account) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Id') ?></th>
             <td><?= $this->Number->format($user->id) ?></td>
         </tr>
