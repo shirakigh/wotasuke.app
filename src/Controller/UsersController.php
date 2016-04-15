@@ -12,6 +12,16 @@ class UsersController extends AppController
 {
 
     /**
+     * Before Filter method
+     *
+     * @return type
+     */
+    public function beforeFilter(\Cake\Event\Event $event) {
+      parent::beforeFilter($event);
+      $this->Auth->allow(['add']);
+    }
+
+    /**
      * Index method
      *
      * @return \Cake\Network\Response|null
@@ -22,6 +32,23 @@ class UsersController extends AppController
 
         $this->set(compact('users'));
         $this->set('_serialize', ['users']);
+    }
+
+    /**
+     * Login method
+     *
+     * @return type
+     */
+    public function login()
+    {
+      if($this->request->is('post')){
+        $user = $this->Auth->identify();
+        if($user){
+          $this->Auth->setUser($user);
+          return $this->redirect($this->Auth->redirectUrl());
+        }
+        $this->Flash->error('ユーザー名かパスワードが間違ってますん');
+      }
     }
 
     /**
