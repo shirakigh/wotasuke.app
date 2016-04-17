@@ -47,8 +47,19 @@ class UsersController extends AppController
           $this->Auth->setUser($user);
           return $this->redirect($this->Auth->redirectUrl());
         }
-        $this->Flash->error('ユーザー名かパスワードが間違ってますん');
+        $this->Flash->error('（　´ Д ｀）＜ユーザ名かパスワードが間違ってるぽ');
       }
+    }
+
+    /**
+     * LOgout Method
+     *
+     * @return bool
+     */
+    public function logout()
+    {
+        $this->request->session()->destroy(); // セッションの破棄
+        return $this->redirect($this->Auth->logout()); // ログアウト処理
     }
 
     /**
