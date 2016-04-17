@@ -1261,5 +1261,58 @@
             "bake",
             "cakephp"
         ]
+    },
+    {
+        "name": "friendsofcake/bootstrap-ui",
+        "version": "v0.5.0",
+        "version_normalized": "0.5.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/FriendsOfCake/bootstrap-ui.git",
+            "reference": "d1483230d1bb46f6ff114ae987ddefd285f09dc7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/FriendsOfCake/bootstrap-ui/zipball/d1483230d1bb46f6ff114ae987ddefd285f09dc7",
+            "reference": "d1483230d1bb46f6ff114ae987ddefd285f09dc7",
+            "shasum": ""
+        },
+        "require": {
+            "cakephp/cakephp": "~3.0"
+        },
+        "require-dev": {
+            "cakephp/cakephp-codesniffer": "dev-master",
+            "phpunit/phpunit": "4.1.*"
+        },
+        "time": "2016-04-06 12:22:58",
+        "type": "cakephp-plugin",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "BootstrapUI\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jad Bitar",
+                "homepage": "http://jadb.io",
+                "role": "Author"
+            },
+            {
+                "name": "Others",
+                "homepage": "https://github.com/friendsofcake/bootstrap-ui/graphs/contributors"
+            }
+        ],
+        "description": "Twitter Bootstrap 3 support for CakePHP 3",
+        "homepage": "http://github.com/friendsofcake/bootstrap-ui",
+        "keywords": [
+            "bootstrap",
+            "cakephp",
+            "twitter"
+        ]
     }
 ]
