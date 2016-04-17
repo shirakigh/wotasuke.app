@@ -48,6 +48,10 @@
             <th><?= __('Is Allday') ?></th>
             <td><?= $event->is_allday ? __('Yes') : __('No'); ?></td>
         </tr>
+        <tr>
+            <th><?= __('Is Private') ?></th>
+            <td><?= $event->is_private ? __('Yes') : __('No'); ?></td>
+        </tr>
     </table>
     <div class="row">
         <h4><?= __('Detail') ?></h4>

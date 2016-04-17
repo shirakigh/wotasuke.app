@@ -27,6 +27,7 @@ class EventsFixture extends TestFixture
         'is_allday' => ['type' => 'boolean', 'length' => null, 'null' => true, 'default' => '0', 'comment' => '', 'precision' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'is_private' => ['type' => 'boolean', 'length' => null, 'null' => true, 'default' => '0', 'comment' => '', 'precision' => null],
         '_indexes' => [
             'user_id' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
         ],
@@ -53,11 +54,12 @@ class EventsFixture extends TestFixture
             'title' => 'Lorem ipsum dolor sit amet',
             'place' => 'Lorem ipsum dolor sit amet',
             'detail' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-            'start' => '2016-04-17 03:56:34',
-            'end' => '2016-04-17 03:56:34',
+            'start' => '2016-04-17 04:24:42',
+            'end' => '2016-04-17 04:24:42',
             'is_allday' => 1,
-            'created' => '2016-04-17 03:56:34',
-            'modified' => '2016-04-17 03:56:34'
+            'created' => '2016-04-17 04:24:42',
+            'modified' => '2016-04-17 04:24:42',
+            'is_private' => 1
         ],
     ];
 }

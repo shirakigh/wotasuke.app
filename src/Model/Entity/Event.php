@@ -17,6 +17,7 @@ use Cake\ORM\Entity;
  * @property bool $is_allday
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
+ * @property bool $is_private
  */
 class Event extends Entity
 {

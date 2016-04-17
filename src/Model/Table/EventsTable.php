@@ -71,6 +71,10 @@ class EventsTable extends Table
             ->boolean('is_allday')
             ->allowEmpty('is_allday');
 
+        $validator
+            ->boolean('is_private')
+            ->allowEmpty('is_private');
+
         return $validator;
     }
 

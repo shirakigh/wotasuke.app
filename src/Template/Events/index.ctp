@@ -20,6 +20,7 @@
                 <th><?= $this->Paginator->sort('is_allday') ?></th>
                 <th><?= $this->Paginator->sort('created') ?></th>
                 <th><?= $this->Paginator->sort('modified') ?></th>
+                <th><?= $this->Paginator->sort('is_private') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -35,6 +36,7 @@
                 <td><?= h($event->is_allday) ?></td>
                 <td><?= h($event->created) ?></td>
                 <td><?= h($event->modified) ?></td>
+                <td><?= h($event->is_private) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $event->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $event->id]) ?>

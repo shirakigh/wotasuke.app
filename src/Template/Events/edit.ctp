@@ -24,6 +24,7 @@
             echo $this->Form->input('start', ['empty' => true]);
             echo $this->Form->input('end', ['empty' => true]);
             echo $this->Form->input('is_allday');
+            echo $this->Form->input('is_private');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
