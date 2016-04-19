@@ -1,38 +1,57 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="users view large-9 medium-8 columns content">
-    <h3><?= h($user->name) ?></h3>
-    <table class="vertical-table">
+<?php
+$this->extend('../Layout/TwitterBootstrap/dashboard');
+
+
+$this->start('tb_actions');
+?>
+<li><?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id]) ?> </li>
+<li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>
+<li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?> </li>
+<li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?> </li>
+<?php
+$this->end();
+
+$this->start('tb_sidebar');
+?>
+<ul class="nav nav-sidebar">
+<li><?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id]) ?> </li>
+<li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>
+<li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?> </li>
+<li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?> </li>
+</ul>
+<?php
+$this->end();
+?>
+<div class="panel panel-default">
+    <!-- Panel header -->
+    <div class="panel-heading">
+        <h3 class="panel-title"><?= h($user->name) ?></h3>
+    </div>
+    <table class="table table-striped" cellpadding="0" cellspacing="0">
         <tr>
-            <th><?= __('Name') ?></th>
+            <td><?= __('Name') ?></td>
             <td><?= h($user->name) ?></td>
         </tr>
         <tr>
-            <th><?= __('Password') ?></th>
-            <td><?= h($user->password) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Login Account') ?></th>
+            <td><?= __('Login Account') ?></td>
             <td><?= h($user->login_account) ?></td>
         </tr>
         <tr>
-            <th><?= __('Id') ?></th>
+            <td><?= __('Password') ?></td>
+            <td><?= h($user->password) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Id') ?></td>
             <td><?= $this->Number->format($user->id) ?></td>
         </tr>
         <tr>
-            <th><?= __('Created') ?></th>
+            <td><?= __('Created') ?></td>
             <td><?= h($user->created) ?></td>
         </tr>
         <tr>
-            <th><?= __('Modified') ?></th>
+            <td><?= __('Modified') ?></td>
             <td><?= h($user->modified) ?></td>
         </tr>
     </table>
 </div>
+

@@ -10,6 +10,7 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
+ * @property \Cake\ORM\Association\HasMany $Events
  */
 class UsersTable extends Table
 {
@@ -29,6 +30,10 @@ class UsersTable extends Table
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->hasMany('Events', [
+            'foreignKey' => 'user_id'
+        ]);
     }
 
     /**
@@ -41,20 +46,36 @@ class UsersTable extends Table
     {
         $validator
             ->integer('id')
-            ->allowEmpty('id', 'create');
+            ->allowEmpty('id', 'create')
+            ->add('id', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
             ->requirePresence('name', 'create')
             ->notEmpty('name');
 
         $validator
+            ->requirePresence('login_account', 'create')
+            ->notEmpty('login_account')
+            ->add('login_account', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+
+        $validator
             ->requirePresence('password', 'create')
             ->notEmpty('password');
 
-        $validator
-            ->requirePresence('login_account', 'create')
-            ->notEmpty('login_account');
-
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->isUnique(['id']));
+        $rules->add($rules->isUnique(['login_account']));
+        return $rules;
     }
 }
