@@ -4,7 +4,7 @@ use Cake\Utility\Inflector;
 %>
 <?php
 /* @var $this \Cake\View\View */
-$this->extend('../Layout/TwitterBootstrap/dashboard');
+$this->extend('/Layout/TwitterBootstrap/dashboard');
 $this->start('tb_actions');
 ?>
     <li><?= $this->Html->link(__('New <%= $singularHumanName %>'), ['action' => 'add']); ?></li>

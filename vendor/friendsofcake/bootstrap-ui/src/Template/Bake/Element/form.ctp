@@ -8,7 +8,7 @@ $fields = collection($fields)
 });
 %>
 <?php
-$this->extend('../Layout/TwitterBootstrap/dashboard');
+$this->extend('/Layout/TwitterBootstrap/dashboard');
 <% foreach (['tb_actions', 'tb_sidebar'] as $block): %>
 
 $this->start('<%= $block %>');

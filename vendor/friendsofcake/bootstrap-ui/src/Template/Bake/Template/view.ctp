@@ -40,7 +40,7 @@ $groupedFields += ['number' => [], 'string' => [], 'boolean' => [], 'date' => []
 $pk = "\$$singularVar->{$primaryKey[0]}";
 %>
 <?php
-$this->extend('../Layout/TwitterBootstrap/dashboard');
+$this->extend('/Layout/TwitterBootstrap/dashboard');
 
 <% foreach (['tb_actions', 'tb_sidebar'] as $block): %>
 
