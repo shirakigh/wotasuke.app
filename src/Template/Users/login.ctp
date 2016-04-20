@@ -1,4 +1,4 @@
-<?= $this->extend('/Layout/twitterbootstrap/signin'); ?>
+<?= $this->extend('/Layout/TwitterBootstrap/signin'); ?>
 <div class="users form">
 <?= $this->Flash->render('auth') ?>
     <?= $this->Form->create() ?>
