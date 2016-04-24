@@ -56,7 +56,11 @@ class UsersTable extends Table
         $validator
             ->requirePresence('login_account', 'create')
             ->notEmpty('login_account')
-            ->add('login_account', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+            ->add('login_account', 'unique', [
+                'rule' => 'validateUnique',
+                'provider' => 'table',
+                'message' => '（　´ Д ｀）＜すでに登録されてるぽ。'
+            ]);
 
         $validator
             ->requirePresence('password', 'create')
