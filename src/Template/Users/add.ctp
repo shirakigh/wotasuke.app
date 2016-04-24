@@ -3,14 +3,14 @@ $this->extend('/Layout/TwitterBootstrap/dashboard');
 
 $this->start('tb_actions');
 ?>
-    <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
+    <li><?= $this->Html->link(__('利用者一覧'), ['action' => 'index']) ?></li>
 <?php
 $this->end();
 
 $this->start('tb_sidebar');
 ?>
 <ul class="nav nav-sidebar">
-    <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
+    <li><?= $this->Html->link(__('利用者一覧'), ['action' => 'index']) ?></li>
 </ul>
 <?php
 $this->end();
@@ -19,10 +19,10 @@ $this->end();
 <fieldset>
     <legend><?= __('Add {0}', ['User']) ?></legend>
     <?php
-    echo $this->Form->input('name');
-    echo $this->Form->input('login_account');
-    echo $this->Form->input('password');
+    echo $this->User->inputName($this);
+    echo $this->User->inputLoginAccount($this);
+    echo $this->User->inputPassword($this);
     ?>
 </fieldset>
-<?= $this->Form->button(__("Add")); ?>
+<?= $this->Form->button(__("登録")); ?>
 <?= $this->Form->end() ?>

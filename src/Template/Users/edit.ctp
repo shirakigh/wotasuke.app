@@ -35,9 +35,9 @@ $this->end();
 <fieldset>
     <legend><?= __('Edit {0}', ['User']) ?></legend>
     <?php
-    echo $this->Form->input('name');
-    echo $this->Form->input('login_account');
-    echo $this->Form->input('password');
+    echo $this->User->inputName($this);
+    echo $this->User->inputLoginAccount($this);
+    echo $this->User->inputPassword($this);
     ?>
 </fieldset>
 <?= $this->Form->button(__("Save")); ?>

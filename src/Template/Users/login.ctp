@@ -4,8 +4,8 @@
     <?= $this->Form->create() ?>
     <fieldset>
         <legend><?= __('WOTASUKE LOGIN') ?></legend>
-        <?= $this->Form->input('login_account') ?>
-        <?= $this->Form->input('password') ?>
+        <?= $this->User->inputLoginAccount($this) ?>
+        <?= $this->User->inputPassword($this) ?>
     </fieldset>
     <?= $this->Form->button(__('Login')); ?>
     <?= $this->Form->end() ?>
