@@ -29,27 +29,19 @@ $this->end();
     </div>
     <table class="table table-striped" cellpadding="0" cellspacing="0">
         <tr>
-            <td><?= __('Name') ?></td>
-            <td><?= h($user->name) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Login Account') ?></td>
+            <td><?= __('login_account') ?></td>
             <td><?= h($user->login_account) ?></td>
         </tr>
         <tr>
-            <td><?= __('Password') ?></td>
-            <td><?= h($user->password) ?></td>
+            <td><?= __('name') ?></td>
+            <td><?= h($user->name) ?></td>
         </tr>
         <tr>
-            <td><?= __('Id') ?></td>
-            <td><?= $this->Number->format($user->id) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Created') ?></td>
+            <td><?= __('created') ?></td>
             <td><?= h($user->created) ?></td>
         </tr>
         <tr>
-            <td><?= __('Modified') ?></td>
+            <td><?= __('modified') ?></td>
             <td><?= h($user->modified) ?></td>
         </tr>
     </table>

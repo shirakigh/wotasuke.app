@@ -33,48 +33,40 @@ $this->end();
     </div>
     <table class="table table-striped" cellpadding="0" cellspacing="0">
         <tr>
-            <td><?= __('User') ?></td>
-            <td><?= $event->has('user') ? $this->Html->link($event->user->name, ['controller' => 'Users', 'action' => 'view', $event->user->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Title') ?></td>
+            <td><?= __('title') ?></td>
             <td><?= h($event->title) ?></td>
         </tr>
         <tr>
-            <td><?= __('Place') ?></td>
+            <td><?= __('place') ?></td>
             <td><?= h($event->place) ?></td>
         </tr>
         <tr>
-            <td><?= __('Id') ?></td>
-            <td><?= $this->Number->format($event->id) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Start') ?></td>
+            <td><?= __('start') ?></td>
             <td><?= h($event->start) ?></td>
         </tr>
         <tr>
-            <td><?= __('End') ?></td>
+            <td><?= __('end') ?></td>
             <td><?= h($event->end) ?></td>
         </tr>
         <tr>
-            <td><?= __('Created') ?></td>
-            <td><?= h($event->created) ?></td>
+            <td><?= __('detail') ?></td>
+            <td><?= $this->Text->autoParagraph(h($event->detail)); ?></td>
         </tr>
         <tr>
-            <td><?= __('Modified') ?></td>
-            <td><?= h($event->modified) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Is Allday') ?></td>
+            <td><?= __('is_allday') ?></td>
             <td><?= $event->is_allday ? __('Yes') : __('No'); ?></td>
         </tr>
         <tr>
-            <td><?= __('Is Private') ?></td>
+            <td><?= __('is_private') ?></td>
             <td><?= $event->is_private ? __('Yes') : __('No'); ?></td>
         </tr>
         <tr>
-            <td><?= __('Detail') ?></td>
-            <td><?= $this->Text->autoParagraph(h($event->detail)); ?></td>
+            <td><?= __('created') ?></td>
+            <td><?= h($event->created) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('modified') ?></td>
+            <td><?= h($event->modified) ?></td>
         </tr>
     </table>
 </div>

@@ -34,5 +34,6 @@ class AppView extends UIView
         //Don't forget to call the parent::initialize()
         parent::initialize();
         $this->loadHelper('User');
+        $this->loadHelper('Event');
     }
 }

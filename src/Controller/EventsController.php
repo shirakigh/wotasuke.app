@@ -54,15 +54,17 @@ class EventsController extends AppController
         $event = $this->Events->newEntity();
         if ($this->request->is('post')) {
             $event = $this->Events->patchEntity($event, $this->request->data);
+            $event->user_id = $this->Auth->user('id');
             if ($this->Events->save($event)) {
-                $this->Flash->success(__('The event has been saved.'));
+                $this->Flash->success(__('（　´ Д ｀）＜楽しんできてね。'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The event could not be saved. Please, try again.'));
+                $this->Flash->error(__('（ ;´ Д ｀）＜保存出来なかったぽ。'));
             }
         }
-        $users = $this->Events->Users->find('list', ['limit' => 200]);
-        $this->set(compact('event', 'users'));
+        //$users = $this->Events->Users->find('list', ['limit' => 200]);
+        //$this->set(compact('event', 'user'));
+        $this->set('event', $event);
         $this->set('_serialize', ['event']);
     }
 
@@ -81,10 +83,10 @@ class EventsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $event = $this->Events->patchEntity($event, $this->request->data);
             if ($this->Events->save($event)) {
-                $this->Flash->success(__('The event has been saved.'));
+                $this->Flash->success(__('（　´ Д ｀）＜楽しんできてね。'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The event could not be saved. Please, try again.'));
+                $this->Flash->error(__('（ ;´ Д ｀）＜保存出来なかったぽ。'));
             }
         }
         $users = $this->Events->Users->find('list', ['limit' => 200]);
@@ -104,9 +106,9 @@ class EventsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $event = $this->Events->get($id);
         if ($this->Events->delete($event)) {
-            $this->Flash->success(__('The event has been deleted.'));
+            $this->Flash->success(__('（　´ Д ｀）＜削除したぽ。'));
         } else {
-            $this->Flash->error(__('The event could not be deleted. Please, try again.'));
+            $this->Flash->error(__('（ ;´ Д ｀）＜削除できなかったぽ。'));
         }
         return $this->redirect(['action' => 'index']);
     }

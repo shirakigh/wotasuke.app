@@ -39,14 +39,13 @@ $this->end();
 <fieldset>
     <legend><?= __('Edit {0}', ['Event']) ?></legend>
     <?php
-    echo $this->Form->input('user_id', ['options' => $users]);
-    echo $this->Form->input('title');
-    echo $this->Form->input('place');
-    echo $this->Form->input('detail');
-    echo $this->Form->input('start');
-    echo $this->Form->input('end');
-    echo $this->Form->input('is_allday');
-    echo $this->Form->input('is_private');
+    echo $this->Event->inputTitle($this);
+    echo $this->Event->inputPlace($this);
+    echo $this->Event->inputDetail($this);
+    echo $this->Event->inputStart($this);
+    echo $this->Event->inputEnd($this);
+    echo $this->Event->inputIsAllday($this);
+    echo $this->Event->inputIsPrivate($this);
     ?>
 </fieldset>
 <?= $this->Form->button(__("Save")); ?>
