@@ -1,8 +1,9 @@
 #/vendor/*
 /config/app.php
-/tmp/*
-/logs/*
-/nbproject/*
+/tmp/
+/logs/
+/nbproject/
 tags
-/vendor/bootstrap-thema/*
-/vendor/components/*
+/vendor/bootstrap-thema/
+/vendor/components/
+*.bak
