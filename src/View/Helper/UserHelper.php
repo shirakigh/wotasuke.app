@@ -22,7 +22,7 @@ class UserHelper extends Helper {
     public function inputPassword($obj) {
         $string = $obj->Form->input('password', [
             'label' => __('password'),
-            'placeholder' => '安心してください！パスワードはしらきには見えませんよ！'
+            'placeholder' => '（　´ Д ｀）＜安心してください！暗号化してますよ！'
         ]);
         return $string;
     }

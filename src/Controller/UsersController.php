@@ -59,7 +59,7 @@ class UsersController extends AppController
     public function logout()
     {
         $this->request->session()->destroy();
-        return $this->redirect($this->Auth->logout()); 
+        return $this->redirect($this->Auth->logout());
     }
 
     /**
@@ -90,10 +90,10 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                $this->Flash->success('（　´ Д ｀）＜ゆっくりしていってね！＞（●´ー｀●）');
+                return $this->redirect(['action' => 'login']);
             } else {
-                $this->Flash->error(__('The user could not be saved. Please, try again.'));
+                $this->Flash->error('（ ;´ Д ｀）＜登録できなかったぽ');
             }
         }
         $this->set(compact('user'));
@@ -115,10 +115,10 @@ class UsersController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success('（　´ Д ｀）＜登録したぽ');
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The user could not be saved. Please, try again.'));
+                $this->Flash->error('（ ;´ Д ｀）＜登録できなかったぽ…');
             }
         }
         $this->set(compact('user'));
@@ -137,9 +137,9 @@ class UsersController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {
-            $this->Flash->success(__('The user has been deleted.'));
+            $this->Flash->success(__('（　´ Д ｀）ﾉｼ ﾊﾞｲﾊﾞｲ'));
         } else {
-            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
+            $this->Flash->error(__('（ ;´ Д ｀）＜お別れできなかったぽ…'));
         }
         return $this->redirect(['action' => 'index']);
     }
