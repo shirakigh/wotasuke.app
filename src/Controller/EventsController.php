@@ -37,7 +37,7 @@ class EventsController extends AppController
     public function view($id = null)
     {
         $event = $this->Events->get($id, [
-            'contain' => ['Users']
+            'contain' => ['Users', 'Favorites']
         ]);
 
         $this->set('event', $event);
@@ -56,15 +56,15 @@ class EventsController extends AppController
             $event = $this->Events->patchEntity($event, $this->request->data);
             $event->user_id = $this->Auth->user('id');
             if ($this->Events->save($event)) {
-                $this->Flash->success(__('（　´ Д ｀）＜楽しんできてね。'));
+                $this->Flash->success(__('event_saved'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('（ ;´ Д ｀）＜保存出来なかったぽ。'));
+                $this->Flash->error(__('could_not_be_saved'));
             }
         }
-        //$users = $this->Events->Users->find('list', ['limit' => 200]);
-        //$this->set(compact('event', 'user'));
-        $this->set('event', $event);
+        $users = $this->Events->Users->find('list', ['limit' => 200]);
+        $favorites = $this->Events->Favorites->find('list', ['limit' => 200]);
+        $this->set(compact('event', 'users', 'favorites'));
         $this->set('_serialize', ['event']);
     }
 
@@ -78,19 +78,20 @@ class EventsController extends AppController
     public function edit($id = null)
     {
         $event = $this->Events->get($id, [
-            'contain' => []
+            'contain' => ['Favorites']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $event = $this->Events->patchEntity($event, $this->request->data);
             if ($this->Events->save($event)) {
-                $this->Flash->success(__('（　´ Д ｀）＜楽しんできてね。'));
+                $this->Flash->success(__('event_saved'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('（ ;´ Д ｀）＜保存出来なかったぽ。'));
+                $this->Flash->error(__('could_not_be_saved'));
             }
         }
         $users = $this->Events->Users->find('list', ['limit' => 200]);
-        $this->set(compact('event', 'users'));
+        $favorites = $this->Events->Favorites->find('list', ['limit' => 200]);
+        $this->set(compact('event', 'users', 'favorites'));
         $this->set('_serialize', ['event']);
     }
 
@@ -106,9 +107,9 @@ class EventsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $event = $this->Events->get($id);
         if ($this->Events->delete($event)) {
-            $this->Flash->success(__('（　´ Д ｀）＜削除したぽ。'));
+            $this->Flash->success(__('deleted'));
         } else {
-            $this->Flash->error(__('（ ;´ Д ｀）＜削除できなかったぽ。'));
+            $this->Flash->error(__('could_not_be_deleted'));
         }
         return $this->redirect(['action' => 'index']);
     }

@@ -34,6 +34,10 @@ class UsersTable extends Table
         $this->hasMany('Events', [
             'foreignKey' => 'user_id'
         ]);
+
+        $this->hasMany('Favorites', [
+            'foreignKey' => 'user_id'
+        ]);
     }
 
     /**
@@ -59,7 +63,7 @@ class UsersTable extends Table
             ->add('login_account', 'unique', [
                 'rule' => 'validateUnique',
                 'provider' => 'table',
-                'message' => '（　´ Д ｀）＜すでに登録されてるぽ。'
+                'message' => __('already_exist'),
             ]);
 
         $validator

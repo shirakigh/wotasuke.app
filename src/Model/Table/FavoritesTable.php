@@ -10,8 +10,8 @@ use Cake\Validation\Validator;
 /**
  * Favorites Model
  *
+ * @property \Cake\ORM\Association\BelongsTo $Users
  * @property \Cake\ORM\Association\BelongsToMany $Events
- * @property \Cake\ORM\Association\BelongsToMany $Users
  */
 class FavoritesTable extends Table
 {
@@ -32,15 +32,14 @@ class FavoritesTable extends Table
 
         $this->addBehavior('Timestamp');
 
+        $this->belongsTo('Users', [
+            'foreignKey' => 'user_id',
+            'joinType' => 'INNER'
+        ]);
         $this->belongsToMany('Events', [
             'foreignKey' => 'favorite_id',
             'targetForeignKey' => 'event_id',
             'joinTable' => 'events_favorites'
-        ]);
-        $this->belongsToMany('Users', [
-            'foreignKey' => 'favorite_id',
-            'targetForeignKey' => 'user_id',
-            'joinTable' => 'favorites_users'
         ]);
     }
 
@@ -68,5 +67,18 @@ class FavoritesTable extends Table
             ->allowEmpty('birthday');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->existsIn(['user_id'], 'Users'));
+        return $rules;
     }
 }

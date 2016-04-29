@@ -284,61 +284,100 @@ msgid "December"
 msgstr "12月"
 
 
-// Button
+# Button -----------------------
+msgid "Actions"
+msgstr "操作"
+
 msgid "Add"
 msgstr "登録"
 
 msgid "Save"
 msgstr "保存"
 
-msgid "Actions"
-msgstr "操作"
+# Link Menu -----------------------
+msgid "Delete Favorite"
+msgstr "推しとお別れする"
 
-// Link Menu
-msgid "List Users"
-msgstr "ユーザ一覧"
-
-msgid "New User"
-msgstr "新規ユーザ登録"
+msgid "Edit Favorite"
+msgstr "推し情報の変更"
 
 msgid "List Events"
 msgstr "イベント一覧"
 
+msgid "List Favorites"
+msgstr "推し一覧"
+
+msgid "List Users"
+msgstr "ユーザ一覧"
+
 msgid "New Event"
 msgstr "新しいイベント"
 
-// Pagenator
-msgid "previous"
-msgstr "前のページ"
+msgid "New Favorite"
+msgstr "推しを追加"
 
+msgid "New User"
+msgstr "新規ユーザ登録"
+
+# Controller Messages -----------------------
+msgid "could_not_be_saved"
+msgstr "（ ;´ Д ｀）＜保存できませんでした。"
+
+msgid "could_not_be_deleted"
+msgstr "（ ;´ Д ｀）＜削除できませんでした。"
+
+msgid "deleted"
+msgstr "（　´ Д ｀）＜削除しました。"
+
+msgid "event_saved"
+msgstr "（　´ Д ｀）＜楽しんできてね。"
+
+msgid "favorite_deleted"
+msgstr "（　´ Д ｀）ﾉｼ ﾊﾞｲﾊﾞｲ"
+
+msgid "favorite_saved"
+msgstr "（ *´ Д ｀）＜推しが増えたよ！"
+
+msgid "login_failed"
+msgstr "（　´ Д ｀）＜ユーザ名かパスワードが間違ってるぽ"
+
+msgid "saved"
+msgstr "（　´ Д ｀）＜保存しました。"
+
+msgid "user_added"
+msgstr "（　´ Д ｀）＜ゆっくりしていってね！＞（●´ー｀●）"
+
+# Varidation Messages -----------------------
+msgid "already_exist"
+msgstr "（　´ Д ｀）＜すでに登録されてるぽ。"
+
+msgid "required"
+msgstr "（　´ Д ｀）＜必須項目だぽ。"
+
+# Template Messages -----------------------
+msgid "Are you sure you want to delete # {0}?"
+msgstr "（　´ Д ｀）＜「{0}」を削除するよ？"
+
+#/ Pagenator -----------------------
 msgid "next"
 msgstr "次のページ"
 
-// Users
-msgid "name"
-msgstr "名前"
+msgid "previous"
+msgstr "前のページ"
 
+# Users -----------------------
 msgid "login_account"
 msgstr "ログインID"
+
+msgid "name"
+msgstr "名前"
 
 msgid "password"
 msgstr "パスワード"
 
-// Events
-msgid "user"
-msgstr "ユーザ"
-
-msgid "title"
-msgstr "タイトル"
-
+# Events -----------------------
 msgid "detail"
 msgstr "詳細"
-
-msgid "place"
-msgstr "場所"
-
-msgid "start"
-msgstr "開始日時"
 
 msgid "end"
 msgstr "終了日時"
@@ -349,9 +388,37 @@ msgstr "終日"
 msgid "is_private"
 msgstr "非公開"
 
-// 共通フィールド
+msgid "place"
+msgstr "場所"
+
+msgid "start"
+msgstr "開始日時"
+
+msgid "title"
+msgstr "タイトル"
+
+# Favorites -----------------------
+msgid "Add Favorite"
+msgstr "推し登録"
+
+msgid "birthday"
+msgstr "誕生日"
+
+msgid "Favorite"
+msgstr "推し"
+
+msgid "nickname"
+msgstr "ニックネーム"
+
+# 共通フィールド -----------------------
 msgid "created"
 msgstr "作成日時"
 
 msgid "modified"
 msgstr "更新日時"
+
+msgid "related_events"
+msgstr "関連イベント"
+
+msgid "user"
+msgstr "ユーザ"

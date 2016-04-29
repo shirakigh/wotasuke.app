@@ -37,6 +37,7 @@ class EventHelper extends Helper {
     public function inputStart($obj) {
         $string = $obj->Form->input('start', [
             'label' => __('start'),
+            'interval' => 15
         ]);
         return $string;
     }
@@ -44,6 +45,7 @@ class EventHelper extends Helper {
     public function inputEnd($obj) {
         $string = $obj->Form->input('end', [
             'label' => __('end'),
+            'interval' => 15
         ]);
         return $string;
     }

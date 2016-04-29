@@ -5,7 +5,7 @@ $this->extend('/Layout/TwitterBootstrap/dashboard');
 $this->start('tb_actions');
 ?>
 <li><?= $this->Html->link(__('Edit Event'), ['action' => 'edit', $event->id]) ?> </li>
-<li><?= $this->Form->postLink(__('Delete Event'), ['action' => 'delete', $event->id], ['confirm' => __('Are you sure you want to delete # {0}?', $event->id)]) ?> </li>
+<li><?= $this->Form->postLink(__('Delete Event'), ['action' => 'delete', $event->id], ['confirm' => __('Are you sure you want to delete # {0}?', $event->title)]) ?> </li>
 <li><?= $this->Html->link(__('List Events'), ['action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Event'), ['action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
@@ -17,7 +17,7 @@ $this->start('tb_sidebar');
 ?>
 <ul class="nav nav-sidebar">
 <li><?= $this->Html->link(__('Edit Event'), ['action' => 'edit', $event->id]) ?> </li>
-<li><?= $this->Form->postLink(__('Delete Event'), ['action' => 'delete', $event->id], ['confirm' => __('Are you sure you want to delete # {0}?', $event->id)]) ?> </li>
+<li><?= $this->Form->postLink(__('Delete Event'), ['action' => 'delete', $event->id], ['confirm' => __('Are you sure you want to delete # {0}?', $event->title)]) ?> </li>
 <li><?= $this->Html->link(__('List Events'), ['action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Event'), ['action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>

@@ -7,7 +7,7 @@ $this->start('tb_actions');
     $this->Form->postLink(
         __('Delete'),
         ['action' => 'delete', $event->id],
-        ['confirm' => __('Are you sure you want to delete # {0}?', $event->id)]
+        ['confirm' => __('Are you sure you want to delete # {0}?', $event->title)]
     )
     ?>
     </li>
@@ -24,7 +24,7 @@ $this->start('tb_sidebar');
     $this->Form->postLink(
         __('Delete'),
         ['action' => 'delete', $event->id],
-        ['confirm' => __('Are you sure you want to delete # {0}?', $event->id)]
+        ['confirm' => __('Are you sure you want to delete # {0}?', $event->title)]
     )
     ?>
     </li>

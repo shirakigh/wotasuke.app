@@ -18,6 +18,9 @@ class FavoritesController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'contain' => ['Users']
+        ];
         $favorites = $this->paginate($this->Favorites);
 
         $this->set(compact('favorites'));
@@ -34,7 +37,7 @@ class FavoritesController extends AppController
     public function view($id = null)
     {
         $favorite = $this->Favorites->get($id, [
-            'contain' => ['Events', 'Users']
+            'contain' => ['Users', 'Events']
         ]);
 
         $this->set('favorite', $favorite);
@@ -51,16 +54,17 @@ class FavoritesController extends AppController
         $favorite = $this->Favorites->newEntity();
         if ($this->request->is('post')) {
             $favorite = $this->Favorites->patchEntity($favorite, $this->request->data);
+            $favorite->user_id = $this->Auth->user('id');
             if ($this->Favorites->save($favorite)) {
-                $this->Flash->success(__('The favorite has been saved.'));
+                $this->Flash->success(__('favorite_saved'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The favorite could not be saved. Please, try again.'));
+                $this->Flash->error(__('could_not_be_saved'));
             }
         }
-        $events = $this->Favorites->Events->find('list', ['limit' => 200]);
         $users = $this->Favorites->Users->find('list', ['limit' => 200]);
-        $this->set(compact('favorite', 'events', 'users'));
+        $events = $this->Favorites->Events->find('list', ['limit' => 200]);
+        $this->set(compact('favorite', 'events'));
         $this->set('_serialize', ['favorite']);
     }
 
@@ -74,20 +78,20 @@ class FavoritesController extends AppController
     public function edit($id = null)
     {
         $favorite = $this->Favorites->get($id, [
-            'contain' => ['Events', 'Users']
+            'contain' => ['Events']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $favorite = $this->Favorites->patchEntity($favorite, $this->request->data);
             if ($this->Favorites->save($favorite)) {
-                $this->Flash->success(__('The favorite has been saved.'));
+                $this->Flash->success(__('saved'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The favorite could not be saved. Please, try again.'));
+                $this->Flash->error(__('could_not_be_saved'));
             }
         }
-        $events = $this->Favorites->Events->find('list', ['limit' => 200]);
         $users = $this->Favorites->Users->find('list', ['limit' => 200]);
-        $this->set(compact('favorite', 'events', 'users'));
+        $events = $this->Favorites->Events->find('list', ['limit' => 200]);
+        $this->set(compact('favorite', 'users', 'events'));
         $this->set('_serialize', ['favorite']);
     }
 
@@ -103,9 +107,9 @@ class FavoritesController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $favorite = $this->Favorites->get($id);
         if ($this->Favorites->delete($favorite)) {
-            $this->Flash->success(__('The favorite has been deleted.'));
+            $this->Flash->success(__('favorite_deleted'));
         } else {
-            $this->Flash->error(__('The favorite could not be deleted. Please, try again.'));
+            $this->Flash->error(__('could_not_be_deleted'));
         }
         return $this->redirect(['action' => 'index']);
     }

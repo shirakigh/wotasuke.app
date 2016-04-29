@@ -11,6 +11,7 @@ use Cake\Validation\Validator;
  * Events Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Users
+ * @property \Cake\ORM\Association\BelongsToMany $Favorites
  */
 class EventsTable extends Table
 {
@@ -34,6 +35,11 @@ class EventsTable extends Table
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
+        ]);
+        $this->belongsToMany('Favorites', [
+            'foreignKey' => 'event_id',
+            'targetForeignKey' => 'favorite_id',
+            'joinTable' => 'events_favorites'
         ]);
     }
 

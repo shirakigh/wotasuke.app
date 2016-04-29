@@ -35,5 +35,6 @@ class AppView extends UIView
         parent::initialize();
         $this->loadHelper('User');
         $this->loadHelper('Event');
+        $this->loadHelper('Favorite');
     }
 }
