@@ -25,10 +25,9 @@ class FavoritesTableTest extends TestCase
      */
     public $fixtures = [
         'app.favorites',
-        'app.events',
         'app.users',
-        'app.events_favorites',
-        'app.favorites_users'
+        'app.events',
+        'app.events_favorites'
     ];
 
     /**
@@ -71,6 +70,16 @@ class FavoritesTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     */
+    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

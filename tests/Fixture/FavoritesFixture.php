@@ -23,8 +23,13 @@ class FavoritesFixture extends TestFixture
         'birthday' => ['type' => 'date', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'user_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        '_indexes' => [
+            'BY_USER_ID' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
+        ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
+            'favorites_ibfk_1' => ['type' => 'foreign', 'columns' => ['user_id'], 'references' => ['users', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -43,9 +48,10 @@ class FavoritesFixture extends TestFixture
             'id' => 1,
             'name' => 'Lorem ipsum dolor sit amet',
             'nickname' => 'Lorem ipsum dolor sit amet',
-            'birthday' => '2016-04-27',
-            'created' => '2016-04-27 15:46:22',
-            'modified' => '2016-04-27 15:46:22'
+            'birthday' => '2016-04-29',
+            'created' => '2016-04-29 11:08:19',
+            'modified' => '2016-04-29 11:08:19',
+            'user_id' => 1
         ],
     ];
 }

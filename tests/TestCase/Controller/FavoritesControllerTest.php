@@ -17,9 +17,8 @@ class FavoritesControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.favorites',
-        'app.events',
         'app.users',
-        'app.favorites_users',
+        'app.events',
         'app.events_favorites'
     ];
 
