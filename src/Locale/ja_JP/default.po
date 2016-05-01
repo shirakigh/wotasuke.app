@@ -345,7 +345,7 @@ msgid "saved"
 msgstr "（　´ Д ｀）＜保存しました。"
 
 msgid "user_added"
-msgstr "（　´ Д ｀）＜ゆっくりしていってね！＞（●´ー｀●）"
+msgstr "（　´ Д ｀）＜ようこそヲタスケへ。"
 
 # Varidation Messages -----------------------
 msgid "already_exist"
@@ -374,6 +374,9 @@ msgstr "名前"
 
 msgid "password"
 msgstr "パスワード"
+
+msgid "welcome_message"
+msgstr "（　´ Д ｀）＜ゆっくりしていってね！＞（●´ー｀●）"
 
 # Events -----------------------
 msgid "detail"

@@ -6,7 +6,7 @@ class UserHelper extends Helper {
     public function inputName($obj) {
         $string = $obj->Form->input('name', [
             'label' => __('name'),
-            'placeholder' => '表示する名前'
+            'placeholder' => '表示名'
         ]);
         return $string;
     }
@@ -14,7 +14,11 @@ class UserHelper extends Helper {
     public function inputLoginAccount($obj) {
         $string = $obj->Form->input('login_account', [
             'label' => __('login_account'),
-            'placeholder' => 'ログインする時のID'
+            'placeholder' => 'ログインID',
+            'class' => 'form-control',
+            'templates' => [
+                'inputContainer' => '{{content}}<span class="glyphicon glyphicon-user form-control-feedback"></span>'
+            ]
         ]);
         return $string;
     }
@@ -22,7 +26,11 @@ class UserHelper extends Helper {
     public function inputPassword($obj) {
         $string = $obj->Form->input('password', [
             'label' => __('password'),
-            'placeholder' => '（　´ Д ｀）＜安心してください！暗号化してますよ！'
+            'placeholder' => '安心してください！暗号化してますよ！',
+            'class' => 'form-control',
+            'templates' => [
+                'inputContainer' => '{{content}}<span class="glyphicon glyphicon-lock form-control-feedback"></span>'
+            ]
         ]);
         return $string;
     }

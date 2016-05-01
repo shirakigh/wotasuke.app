@@ -7,3 +7,4 @@ tags
 /vendor/bootstrap-thema/
 /vendor/components/
 *.bak
+/vendor/bower_components/
