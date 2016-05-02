@@ -38,13 +38,13 @@
             <!-- Menu Body -->
             <li class="user-body">
               <div class="col-xs-4 text-center">
-                <a href="#">Calendar</a>
+                <?= $this->Html->link(__('Calendar'), ['controller' => 'Events', 'action' => 'index']) ?>
               </div>
               <div class="col-xs-4 text-center">
-                <a href="#">Profile</a>
+                <?= $this->Html->link(__('Profile'), ['controller' => 'Users', 'action' => 'view', $this->request->session()->read('Auth.User.id')]) ?>
               </div>
               <div class="col-xs-4 text-center">
-                <a href="#">Favorites</a>
+                <?= $this->Html->link(__('Favorites'), ['controller' => 'Favorites', 'action' => 'index']) ?>
               </div>
             </li>
             <!-- Menu Footer-->
@@ -53,7 +53,7 @@
                 <a href="#" class="btn btn-default btn-flat">Change Password</a>
               </div>
               <div class="pull-right">
-                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                <?= $this->Html->link(__('Sign out'), ['controller' => 'Users', 'action' => 'logout'],['class' => 'btn btn-default btn-flat']) ?>
               </div>
             </li>
           </ul>

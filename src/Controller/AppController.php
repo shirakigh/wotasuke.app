@@ -61,6 +61,10 @@ class AppController extends Controller
               'controller' => 'Events',
               'action' => 'index',
             ],
+            'logoutRedirect' => [
+              'controller' => 'Users',
+              'action' => 'login',
+            ],
         ]);
     }
 

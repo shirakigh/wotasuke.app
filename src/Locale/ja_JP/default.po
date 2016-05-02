@@ -413,6 +413,9 @@ msgid "welcome_message"
 msgstr "（　´ Д ｀）＜ゆっくりしていってね！＞（●´ー｀●）"
 
 # Events -----------------------
+msgid "datetime"
+msgstr "日時"
+
 msgid "detail"
 msgstr "詳細"
 

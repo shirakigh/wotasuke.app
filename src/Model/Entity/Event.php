@@ -35,4 +35,11 @@ class Event extends Entity
         '*' => true,
         'id' => false,
     ];
+
+    protected function _getEventRange()
+    {
+        $range = $this->_properties['start'] . '～' . $this->_properties['end'];
+        return $range;
+    }
+
 }

@@ -17,8 +17,8 @@ $this->start('tb_actions');
             <th><?= $this->Paginator->sort(__('name')); ?></th>
             <th><?= $this->Paginator->sort(__('nickname')); ?></th>
             <th><?= $this->Paginator->sort(__('birthday')); ?></th>
-            <th><?= $this->Paginator->sort(__('created')); ?></th>
-            <th><?= $this->Paginator->sort(__('user_id')); ?></th>
+            <th class="hidden-xs"><?= $this->Paginator->sort(__('created')); ?></th>
+            <th class="hidden-xs"><?= $this->Paginator->sort(__('user_id')); ?></th>
             <th class="actions"><?= __('Actions'); ?></th>
         </tr>
     </thead>
@@ -28,8 +28,8 @@ $this->start('tb_actions');
             <td><?= h($favorite->name) ?></td>
             <td><?= h($favorite->nickname) ?></td>
             <td><?= h($favorite->birthday) ?></td>
-            <td><?= h($favorite->created) ?></td>
-            <td>
+            <td class="hidden-xs"><?= h($favorite->created) ?></td>
+            <td class="hidden-xs">
                 <?= $favorite->has('user') ? $this->Html->link($favorite->user->name, ['controller' => 'Users', 'action' => 'view', $favorite->user->id]) : '' ?>
             </td>
             <td class="actions">

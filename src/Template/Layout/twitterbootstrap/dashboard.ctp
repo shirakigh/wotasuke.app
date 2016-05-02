@@ -35,7 +35,7 @@ $this->prepend('tb_body_attrs', ' class="hold-transition skin-blue sidebar-mini"
           <?= $this->request->action; ?>
         </h1>
       </section>
-
+      <?= $this->Flash->render('auth') ?>
       <!-- Main content -->
       <section class="content">
 
