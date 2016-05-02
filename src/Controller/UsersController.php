@@ -47,7 +47,9 @@ class UsersController extends AppController
           $this->Auth->setUser($user);
           return $this->redirect($this->Auth->redirectUrl());
         }
-        $this->Flash->error(__('login_failed'));
+        $this->Flash->error(__('login_failed'), [
+            'key' => 'login_error'
+        ]);
       }
     }
 

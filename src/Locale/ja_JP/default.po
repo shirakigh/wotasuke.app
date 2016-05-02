@@ -29,7 +29,7 @@ msgstr "内部エラーが発生しました"
 
 #: Controller/Component/AuthComponent.php:454
 msgid "You are not authorized to access that location."
-msgstr "アクセスするための権限がありません。"
+msgstr "ログインしてください"
 
 #: Controller/Component/CsrfComponent.php:154
 msgid "Missing CSRF token cookie"

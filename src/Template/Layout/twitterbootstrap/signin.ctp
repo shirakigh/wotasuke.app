@@ -24,21 +24,10 @@ $this->start('tb_body_start');
       <div class="login-logo">
         <b>WOTASUKE</b>
       </div><!-- /.login-logo -->
+      <?= $this->Flash->render('login_error') ?>
+      <?= $this->Flash->render('auth') ?>
       <div class="login-box-body">
-            <?php
-            /**
-             * Default `flash` block.
-             */
-            if (!$this->fetch('tb_flash')) {
-                $this->start('tb_flash');
-                if (isset($this->Flash))
-                    echo $this->Flash->render();
-                $this->end();
-            }
-
-            //$this->append('content', '</div>');
-            echo $this->fetch('content');
-            ?>
+        <?= $this->fetch('content') ?>
         <a href="#">パスワード忘れたらこちら</a><br>
         <?= $this->Html->link(__('New User'), ['action' => 'add']) ?>
 

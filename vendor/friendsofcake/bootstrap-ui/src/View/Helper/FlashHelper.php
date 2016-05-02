@@ -20,7 +20,7 @@ class FlashHelper extends Helper
      * @var array
      */
     protected $_defaultConfig = [
-        'class' => ['alert', 'alert-dismissible', 'fade', 'in'],
+        'class' => ['callout', 'alert', 'alert-dismissible', 'fade', 'in'],     // callout→AdminLTE用
         'attributes' => ['role' => 'alert'],
         'element' => 'BootstrapUI.Flash/default'
     ];

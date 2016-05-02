@@ -1,6 +1,5 @@
 <?= $this->extend('/Layout/twitterbootstrap/signin'); ?>
 <div class="users form">
-<?= $this->Flash->render('auth') ?>
     <?= $this->Form->create() ?>
     <fieldset>
         <legend><?= __('LOGIN') ?></legend>
