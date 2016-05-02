@@ -24,7 +24,7 @@ $this->start('tb_body_start');
       <div class="login-logo">
         <b>WOTASUKE</b>
       </div><!-- /.login-logo -->
-      <?= $this->Flash->render('login_error') ?>
+      <?= $this->Flash->render() ?>
       <?= $this->Flash->render('auth') ?>
       <div class="login-box-body">
         <?= $this->fetch('content') ?>
