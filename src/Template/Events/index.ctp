@@ -1,6 +1,7 @@
 <?php
 /* @var $this \Cake\View\View */
 $this->extend('/Layout/twitterbootstrap/dashboard');
+echo $this->element('calendar');
 ?>
 <table class="table table-striped" cellpadding="0" cellspacing="0">
     <thead>
