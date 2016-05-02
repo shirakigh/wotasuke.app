@@ -68,7 +68,12 @@ class UsersTable extends Table
 
         $validator
             ->requirePresence('password', 'create')
-            ->notEmpty('password');
+            ->notEmpty('password')
+            ->add('password', 'comWith', [
+                // 確認用と同じかどうか
+                'rule' => ['compareWith', 'password_confirm'],
+                'message' => __('not_confirm'),
+            ]);
 
         return $validator;
     }

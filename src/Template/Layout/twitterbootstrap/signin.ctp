@@ -28,9 +28,6 @@ $this->start('tb_body_start');
       <?= $this->Flash->render('auth') ?>
       <div class="login-box-body">
         <?= $this->fetch('content') ?>
-        <a href="#">パスワード忘れたらこちら</a><br>
-        <?= $this->Html->link(__('New User'), ['action' => 'add']) ?>
-
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
 

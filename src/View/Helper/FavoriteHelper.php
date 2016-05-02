@@ -6,7 +6,7 @@ class FavoriteHelper extends Helper {
     public function inputName($obj) {
         $string = $obj->Form->input('name', [
             'label' => __('name'),
-            'placeholder' => '推しの名前'
+            'placeholder' => __('ph_favorite_name'),
         ]);
         return $string;
     }
@@ -14,7 +14,7 @@ class FavoriteHelper extends Helper {
     public function inputNickname($obj) {
         $string = $obj->Form->input('nickname', [
             'label' => __('nickname'),
-            'placeholder' => 'ニックネーム'
+            'placeholder' => __('ph_nickname'),
         ]);
         return $string;
     }

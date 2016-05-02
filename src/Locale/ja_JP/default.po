@@ -339,7 +339,7 @@ msgid "favorite_saved"
 msgstr "（ *´ Д ｀）＜推しが増えたよ！"
 
 msgid "login_failed"
-msgstr "（　´ Д ｀）＜ユーザ名かパスワードが間違ってるぽ"
+msgstr "（　´ Д ｀）＜IDかパスワードが間違ってるぽ"
 
 msgid "saved"
 msgstr "（　´ Д ｀）＜保存しました。"
@@ -351,8 +351,36 @@ msgstr "（　´ Д ｀）＜ようこそヲタスケへ。"
 msgid "already_exist"
 msgstr "（　´ Д ｀）＜すでに登録されてるぽ。"
 
+msgid "not_confirm"
+msgstr "（　´ Д ｀）＜一致しません。"
+
 msgid "required"
 msgstr "（　´ Д ｀）＜必須項目だぽ。"
+
+# Placeholder -----------------------
+msgid "ph_title"
+msgstr "イベント名"
+
+msgid "ph_favorite_name"
+msgstr "推しの名前"
+
+msgid "ph_login_account"
+msgstr "ログインID"
+
+msgid "ph_name"
+msgstr "表示名"
+
+msgid "ph_nickname"
+msgstr "ニックネーム"
+
+msgid "ph_password"
+msgstr "安心してください！暗号化してますよ！"
+
+msgid "ph_password_confirm"
+msgstr "もう一度入力してください"
+
+msgid "ph_place"
+msgstr "（　´ Д ｀）＜そのうちGoogleMapと連動したいぽ"
 
 # Template Messages -----------------------
 msgid "Are you sure you want to delete # {0}?"
@@ -374,6 +402,9 @@ msgstr "名前"
 
 msgid "password"
 msgstr "パスワード"
+
+msgid "password_confirm"
+msgstr "パスワード(確認用)"
 
 msgid "welcome_message"
 msgstr "（　´ Д ｀）＜ゆっくりしていってね！＞（●´ー｀●）"

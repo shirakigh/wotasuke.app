@@ -14,7 +14,7 @@ class EventHelper extends Helper {
     public function inputTitle($obj) {
         $string = $obj->Form->input('title', [
             'label' => __('title'),
-            'placeholder' => 'イベント名'
+            'placeholder' => __('ph_title'),
         ]);
         return $string;
     }
@@ -22,7 +22,7 @@ class EventHelper extends Helper {
     public function inputPlace($obj) {
         $string = $obj->Form->input('place', [
             'label' => __('place'),
-            'placeholder' => '（　´ Д ｀）＜そのうちGoogleMapと連動したいぽ'
+            'placeholder' => __('ph_place'),
         ]);
         return $string;
     }

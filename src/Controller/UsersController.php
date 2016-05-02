@@ -93,7 +93,10 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('user_added'));
-                return $this->redirect(['action' => 'login']);
+                return $this->redirect([
+                    'controller' => 'Events',
+                    'action' => 'index'
+                ]);
             } else {
                 $this->Flash->error(__('could_not_be_saved'));
             }

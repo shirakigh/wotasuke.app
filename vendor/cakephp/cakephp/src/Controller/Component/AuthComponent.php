@@ -441,9 +441,9 @@ class AuthComponent extends Component
         $defaults = [
             'authenticate' => ['Form'],
             'flash' => [
-                'element' => 'default',
+                'element' => 'error',
                 'key' => 'auth',
-                'params' => ['class' => 'error']
+                'params' => ['class' => 'callout alert alert-dismissible fade in alert-danger']
             ],
             'loginAction' => [
                 'controller' => 'Users',
