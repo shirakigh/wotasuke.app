@@ -301,6 +301,9 @@ msgstr "推しとお別れする"
 msgid "Edit Favorite"
 msgstr "推し情報の変更"
 
+msgid "Edit User"
+msgstr "ユーザ情報の変更"
+
 msgid "List Events"
 msgstr "イベント一覧"
 
