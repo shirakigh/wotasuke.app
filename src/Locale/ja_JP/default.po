@@ -361,8 +361,8 @@ msgid "required"
 msgstr "（　´ Д ｀）＜必須項目だぽ。"
 
 # Placeholder -----------------------
-msgid "ph_title"
-msgstr "イベント名"
+msgid "ph_bgcolor"
+msgstr "← をクリックして色を選択してください"
 
 msgid "ph_favorite_name"
 msgstr "推しの名前"
@@ -384,6 +384,9 @@ msgstr "もう一度入力してください"
 
 msgid "ph_place"
 msgstr "（　´ Д ｀）＜そのうちGoogleMapと連動したいぽ"
+
+msgid "ph_title"
+msgstr "イベント名"
 
 # Template Messages -----------------------
 msgid "Are you sure you want to delete # {0}?"
@@ -419,6 +422,9 @@ msgstr "日時"
 msgid "detail"
 msgstr "詳細"
 
+msgid "Draggable Events"
+msgstr "ドラッグでイベントを作成"
+
 msgid "end"
 msgstr "終了日時"
 
@@ -440,6 +446,9 @@ msgstr "タイトル"
 # Favorites -----------------------
 msgid "Add Favorite"
 msgstr "推し登録"
+
+msgid "bgcolor"
+msgstr "イメージカラー"
 
 msgid "birthday"
 msgstr "誕生日"

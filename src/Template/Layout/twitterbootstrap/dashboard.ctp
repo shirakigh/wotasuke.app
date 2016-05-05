@@ -39,5 +39,6 @@ $this->end();
 $this->start('tb_body_end');
 echo $this->fetch('script');
 echo $this->fetch('scriptBottom');
+echo $this->fetch('page_script');
 echo '</body>';
 $this->end();

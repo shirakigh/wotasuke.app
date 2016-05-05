@@ -13,6 +13,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  * @property int $user_id
+ * @property string $bgcolor
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Event[] $events
  */
