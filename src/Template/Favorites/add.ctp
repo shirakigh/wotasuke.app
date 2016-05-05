@@ -1,5 +1,6 @@
 <?php
 $this->extend('/Layout/twitterbootstrap/dashboard');
+$this->element('daterangepicker');
 //Bootstrap Color Picker
 $this->prepend('css', $this->Html->css('/plugins/colorpicker/bootstrap-colorpicker.min'));
 //bootstrap color picker
@@ -11,6 +12,7 @@ $this->prepend('scriptBottom', $this->Html->script('/plugins/colorpicker/bootstr
     <?php
     echo $this->Favorite->inputName($this);
     echo $this->Favorite->inputNickname($this);
+    echo $this->Form->label('birthday', __("birthday"));
     echo $this->Favorite->inputBirthday($this);
     echo $this->Form->label('bgcolor', __("bgcolor"));
     echo $this->Favorite->inputBgcolor($this);

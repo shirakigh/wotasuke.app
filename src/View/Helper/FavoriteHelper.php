@@ -21,9 +21,14 @@ class FavoriteHelper extends Helper {
 
     public function inputBirthday($obj) {
         $string = $obj->Form->input('birthday', [
-            'label' => __('birthday'),
-            'minYear' => '1970',
-            'orderYear' => 'asc',
+            'type' => 'text',
+            'label' => false,
+            'class' => 'form-control pull-left',
+            'id' => 'birthday',
+            'placeholder' => __('ph_birthday'),
+            'templates' => [
+                'inputContainer' => '<div class="form-group input-group"><div class="input-group-addon"><i class="fa fa-calendar"></i></div>{{content}}</div>',
+            ]
         ]);
         return $string;
     }

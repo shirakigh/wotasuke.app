@@ -11,9 +11,25 @@ $this->prepend('scriptBottom', $this->Html->script('https://cdnjs.cloudflare.com
 ?>
 
 <?= $this->Html->scriptStart(['block' => 'page_script']) ?>
-  //Date range picker
-  $('#reservation').daterangepicker();
-  //Date range picker with time picker
+  //誕生日用 SinglePicker
+  $('#birthday').daterangepicker({
+    "autoUpdateInput": false,
+    "showDropdowns": true,
+    "singleDatePicker": true,
+    "minDate": "1970/01/01",
+    "maxDate": new Date(),
+    "locale": {
+        "format": "YYYY/MM/DD",
+        "applyLabel": "決定",
+        "cancelLabel": "キャンセル",
+        "firstDay": 1,
+    },
+  });
+  $('input[id="birthday"]').on('apply.daterangepicker', function(ev, picker) {
+    $(this).val(picker.startDate.format('YYYY/MM/DD'));
+  });
+
+  //イベント日時用 DateRangePicker
   $('#eventrangetime').daterangepicker({
     autoUpdateInput: false,
     "showDropdowns": true,
