@@ -1,6 +1,7 @@
 <?php
 $this->extend('/Layout/twitterbootstrap/dashboard');
 $this->element('daterangepicker');
+$this->element('select2');
 ?>
 <?= $this->Form->create($event); ?>
 <fieldset>
@@ -9,6 +10,7 @@ $this->element('daterangepicker');
     echo $this->Form->label('range', __("range"));
     echo $this->Event->inputEventRange($this);
     echo $this->Event->inputPlace($this);
+    echo $this->Event->inputFavorites($this, $favorites);
     echo $this->Event->inputDetail($this);
     echo $this->Event->inputStart($this);
     echo $this->Event->inputEnd($this);

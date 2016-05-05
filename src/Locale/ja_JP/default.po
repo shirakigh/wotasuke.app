@@ -296,10 +296,10 @@ msgstr "保存"
 
 # Link Menu -----------------------
 msgid "Delete Favorite"
-msgstr "推しとお別れする"
+msgstr "お気に入りとお別れする"
 
 msgid "Edit Favorite"
-msgstr "推し情報の変更"
+msgstr "お気に入り情報の変更"
 
 msgid "Edit User"
 msgstr "ユーザ情報の変更"
@@ -308,7 +308,7 @@ msgid "List Events"
 msgstr "イベント一覧"
 
 msgid "List Favorites"
-msgstr "推し一覧"
+msgstr "お気に入り一覧"
 
 msgid "List Users"
 msgstr "ユーザ一覧"
@@ -317,7 +317,7 @@ msgid "New Event"
 msgstr "新しいイベント"
 
 msgid "New Favorite"
-msgstr "推しを追加"
+msgstr "お気に入りを追加"
 
 msgid "New User"
 msgstr "新規ユーザ登録"
@@ -365,7 +365,7 @@ msgid "ph_bgcolor"
 msgstr "← をクリックして色を選択してください"
 
 msgid "ph_favorite_name"
-msgstr "推しの名前"
+msgstr "名前"
 
 msgid "ph_login_account"
 msgstr "ログインID"
@@ -443,6 +443,9 @@ msgstr "場所"
 msgid "range"
 msgstr "イベント日時"
 
+msgid "related_favorites"
+msgstr "関連するお気に入り"
+
 msgid "start"
 msgstr "開始日時"
 
@@ -451,7 +454,7 @@ msgstr "タイトル"
 
 # Favorites -----------------------
 msgid "Add Favorite"
-msgstr "推し登録"
+msgstr "お気に入り登録"
 
 msgid "bgcolor"
 msgstr "イメージカラー"
@@ -460,7 +463,7 @@ msgid "birthday"
 msgstr "誕生日"
 
 msgid "Favorite"
-msgstr "推し"
+msgstr "お気に入り"
 
 msgid "nickname"
 msgstr "ニックネーム"

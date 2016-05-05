@@ -1,8 +1,8 @@
 <?php
+$this->prepend('cssBottom', $this->Html->css('wotasuke/AdminLTE.min'));
+$this->prepend('css', $this->Html->css('wotasuke/skins/skin-blue.min'));
 $this->prepend('css', $this->Html->css('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'));
 $this->prepend('css', $this->Html->css('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'));
-$this->prepend('css', $this->Html->css('wotasuke/AdminLTE.min'));
-$this->prepend('css', $this->Html->css('wotasuke/skins/skin-blue.min'));
 
 $this->prepend('scriptBottom', $this->Html->script('wotasuke/app.min'));
 

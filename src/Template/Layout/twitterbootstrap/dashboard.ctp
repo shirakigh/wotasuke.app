@@ -37,6 +37,7 @@ $this->element('html_header');
 $this->end();
 
 $this->start('tb_body_end');
+echo $this->fetch('cssBottom');
 echo $this->fetch('script');
 echo $this->fetch('scriptBottom');
 echo $this->fetch('page_script');

@@ -74,4 +74,18 @@ class EventHelper extends Helper {
         ]);
         return $string;
     }
+
+    public function inputFavorites($obj, $favorite) {
+        $string = $obj->Form->input('favorites._ids', [
+            'options' => $favorite,
+            'label' => __('related_favorites'),
+            'class' => 'form-control select2',
+            'multiple' => 'multiple',
+            'id' => 'eventrangetime',
+            'templates' => [
+                'inputContainer' => '<div class="form-group">{{content}}</div>',
+            ]
+        ]);
+        return $string;
+    }
 }

@@ -1,10 +1,7 @@
 <?php
 $this->extend('/Layout/twitterbootstrap/dashboard');
 $this->element('daterangepicker');
-//Bootstrap Color Picker
-$this->prepend('css', $this->Html->css('/plugins/colorpicker/bootstrap-colorpicker.min'));
-//bootstrap color picker
-$this->prepend('scriptBottom', $this->Html->script('/plugins/colorpicker/bootstrap-colorpicker.min'));
+$this->element('colorpicker');
 ?>
 <?= $this->Form->create($favorite); ?>
 <fieldset>
@@ -20,9 +17,3 @@ $this->prepend('scriptBottom', $this->Html->script('/plugins/colorpicker/bootstr
 </fieldset>
 <?= $this->Form->button(__("Save")); ?>
 <?= $this->Form->end() ?>
-<?= $this->Html->scriptStart(['block' => 'page_script']) ?>
-$(function(){
-  //color picker with addon
-  $(".my-colorpicker2").colorpicker();
-});
-<?= $this->Html->scriptEnd() ?>
