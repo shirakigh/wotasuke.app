@@ -28,11 +28,22 @@ class FavoriteHelper extends Helper {
         return $string;
     }
 
-    //$string = $obj->Form->input('events._ids', ['options' => $events]);
     public function inputEvents($obj, $event) {
         $string = $obj->Form->input('events._ids', [
             'options' => $event,
             'label' => __('related_events'),
+        ]);
+        return $string;
+    }
+
+    public function inputBgcolor($obj) {
+        $string = $obj->Form->input('bgcolor', [
+            'label' => false,
+            'placeholder' => __('ph_bgcolor'),
+            'class' => 'form-control',
+            'templates' => [
+                'inputContainer' => '<div class="form-group input-group my-colorpicker2"><div class="input-group-addon"><i></i></div>{{content}}</div>',
+            ]
         ]);
         return $string;
     }

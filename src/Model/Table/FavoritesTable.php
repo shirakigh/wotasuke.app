@@ -66,6 +66,9 @@ class FavoritesTable extends Table
             ->date('birthday')
             ->allowEmpty('birthday');
 
+        $validator
+            ->allowEmpty('bgcolor');
+
         return $validator;
     }
 
