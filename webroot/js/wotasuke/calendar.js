@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
   $('#calendar').fullCalendar({
     axisFormat: 'H:mm',     // スロットの時間の書式
     columnFormat: {
@@ -6,7 +7,7 @@ $(document).ready(function () {
     },
     defaultView: 'month',
     editable: true,
-    events: '/ajax/feed/',
+    events: $('#api-url').data('val'),
     firstDay: 1,
     firstHour: 8,
     header: {

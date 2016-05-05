@@ -15,6 +15,14 @@ $this->prepend('scriptBottom', $this->Html->script('/plugins/slimScroll/jquery.s
 $this->prepend('scriptBottom', $this->Html->script('https://code.jquery.com/ui/1.11.4/jquery-ui.min.js'));
 ?>
 
+<!-- FullCalendar Events Get URL -->
+<div type="hidden"
+     id="api-url"
+     style="display:none;"
+     data-val="<?= $this->url->build('/ajax/feed/', true); ?>">
+</div>
+
+
 <div class="row">
 	<div class="col-md-9">
 		<div class="box box-primary">
