@@ -385,6 +385,9 @@ msgstr "もう一度入力してください"
 msgid "ph_place"
 msgstr "（　´ Д ｀）＜そのうちGoogleMapと連動したいぽ"
 
+msgid "ph_range"
+msgstr "イベント期間を選択"
+
 msgid "ph_title"
 msgstr "イベント名"
 
@@ -436,6 +439,9 @@ msgstr "非公開"
 
 msgid "place"
 msgstr "場所"
+
+msgid "range"
+msgstr "イベント日時"
 
 msgid "start"
 msgstr "開始日時"

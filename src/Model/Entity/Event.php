@@ -38,8 +38,11 @@ class Event extends Entity
 
     protected function _getEventRange()
     {
-        $range = $this->_properties['start'] . '～' . $this->_properties['end'];
-        return $range;
+        if (!empty($this->_properties)) {
+            return $this->_properties['start'] . ' ～ ' . $this->_properties['end'];
+        } else {
+            return null;
+        }
     }
-
+    
 }

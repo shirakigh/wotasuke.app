@@ -34,18 +34,29 @@ class EventHelper extends Helper {
         return $string;
     }
 
+    public function inputEventRange($obj) {
+        $string = $obj->Form->input('event_range', [
+            'label' => false,
+            'class' => 'form-control pull-left',
+            'id' => 'eventrangetime',
+            'placeholder' => __('ph_range'),
+            'templates' => [
+                'inputContainer' => '<div class="form-group input-group"><div class="input-group-addon"><i class="fa fa-calendar"></i></div>{{content}}</div>',
+            ]
+        ]);
+        return $string;
+    }
+
     public function inputStart($obj) {
-        $string = $obj->Form->input('start', [
-            'label' => __('start'),
-            'interval' => 15
+        $string = $obj->Form->hidden('start', [
+            'type' => 'text'
         ]);
         return $string;
     }
 
     public function inputEnd($obj) {
-        $string = $obj->Form->input('end', [
-            'label' => __('end'),
-            'interval' => 15
+        $string = $obj->Form->hidden('end', [
+            'type' => 'text'
         ]);
         return $string;
     }
