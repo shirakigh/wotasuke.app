@@ -3,7 +3,6 @@
 
 $this->prepend('css', $this->Html->css('/plugins/fullcalendar/fullcalendar.min'));
 $this->prepend('css', $this->Html->css('/plugins/fullcalendar/fullcalendar.print', ['media' => 'print']));
-$this->prepend('css', $this->Html->css('wotasuke/skins/_all-skins.min'));
 
 $this->prepend('scriptBottom', $this->Html->script('http://cdnjs.cloudflare.com/ajax/libs/qtip2/2.2.1/jquery.qtip.min.js'));
 $this->prepend('scriptBottom', $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.7.1/lang/ja.js'));

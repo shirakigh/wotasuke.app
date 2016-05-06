@@ -1,48 +1,54 @@
 <?php
 $this->extend('/Layout/twitterbootstrap/dashboard');
-
-
-$this->start('tb_actions');
 ?>
-<li><?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id]) ?> </li>
-<li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>
-<li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?> </li>
-<?php
-$this->end();
+<!-- Main content -->
+<section class="content">
 
-$this->start('tb_sidebar');
-?>
-<ul class="nav nav-sidebar">
-<li><?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id]) ?> </li>
-<li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>
-<li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?> </li>
-</ul>
-<?php
-$this->end();
-?>
-<div class="panel panel-default">
-    <!-- Panel header -->
-    <div class="panel-heading">
-        <h3 class="panel-title"><?= h($user->name) ?></h3>
-    </div>
-    <table class="table table-striped" cellpadding="0" cellspacing="0">
-        <tr>
-            <td><?= __('login_account') ?></td>
-            <td><?= h($user->login_account) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('name') ?></td>
-            <td><?= h($user->name) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('created') ?></td>
-            <td><?= h($user->created) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('modified') ?></td>
-            <td><?= h($user->modified) ?></td>
-        </tr>
-    </table>
-</div>
+  <div class="row">
+
+    <div class="col-md-3">
+      <!-- Profile Image -->
+      <div class="box box-primary">
+        <div class="box-body box-profile">
+          <?= $this->Html->image('thumnail/shiraki.png', ['class' => 'profile-user-img img-responsive img-circle']); ?>
+          <h3 class="profile-username text-center"><?= h($user->name) ?></h3>
+
+          <ul class="list-group list-group-unbordered">
+            <li class="list-group-item">
+              <b><?= __('name') ?></b> <a class="pull-right"><?= h($user->name) ?></a>
+            </li>
+            <li class="list-group-item">
+              <b><?= __('login_account') ?></b> <a class="pull-right"><?= h($user->login_account) ?></a>
+            </li>
+            <li class="list-group-item">
+              <b><?= __('created') ?></b> <a class="pull-right"><?= h($user->created) ?></a>
+            </li>
+          </ul>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div><!-- /.col -->
+
+    <div class="col-md-9">
+      <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
+          <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
+          <li><a href="#settings" data-toggle="tab">Settings</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="active tab-pane" id="activity">
+            <?= $this->element('calendar'); ?>
+          </div><!-- /.tab-pane -->
+          <div class="tab-pane" id="timeline">
+            <!-- The timeline -->
+          </div><!-- /.tab-pane -->
+          <!-- Settings tab content -->
+          <div class="tab-pane" id="control-sidebar-settings-tab">
+          </div><!-- /.tab-pane -->
+        </div><!-- /.tab-content -->
+      </div><!-- /.nav-tabs-custom -->
+    </div><!-- /.col -->
+
+  </div><!-- /.row -->
+
+</section><!-- /.content -->

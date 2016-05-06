@@ -28,10 +28,8 @@ class AjaxController extends AppController {
             // 終日フラグの設定
             if($event->is_allday == 1) {
                 $allday = true;
-                $end = $event->start;
             } else {
                 $allday = false;
-                $end = $event->end;
             }
 
             // 推しにイメージカラーが設定されていたら背景色にする
@@ -44,12 +42,12 @@ class AjaxController extends AppController {
                     $bgcolor = null;
                 }
             }
-            
+
             $data[] = array(
                 'id' => $event->id,
                 'title'=>$event->title,
                 'start'=>$event->start,
-                'end' => $end,
+                'end' => $event->end,
                 'allDay' => $allday,
                 'url' => Router::url('/events/view/'.$event->id, true),
                 'details' => $event->details,
