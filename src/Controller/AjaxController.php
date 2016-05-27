@@ -3,9 +3,19 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Routing\Router;
+use \DateTime;
+use \DateTimeZone;
+
+
 
 class AjaxController extends AppController {
 
+    public function isAuthorized($user)
+    {
+        // とりあえず全て通すようにする
+        $this->loadModel('Users');
+        return true;
+    }
     /**
     * Feed method
     *
@@ -17,11 +27,13 @@ class AjaxController extends AppController {
         $this->autoRender = false;
         $this->response->type('json');
         $this->request->allowMethod(['get']);
-        $vars = $this->params['url'];
-        $conditions = ['UNIX_TIMESTAMP(start) >=' => $vars['start'], 'UNIX_TIMESTAMP(start) <=' => $vars['end']];
         $this->loadModel('Events');
-        $events = $this->Events->find('all', [
-            $conditions,
+        $events = $this->Events->find('all',[
+            'conditions' => [
+                'Events.start >=' => $this->request->query('start'),
+                'Events.start <=' => $this->request->query('end'),
+                'Events.user_id' => $this->Auth->user('id'),
+            ],
             'contain' => ['Favorites'],
         ]);
         foreach($events as $event) {
@@ -46,7 +58,7 @@ class AjaxController extends AppController {
             $data[] = array(
                 'id' => $event->id,
                 'title'=>$event->title,
-                'start'=>$event->start,
+                'start'=> $event->start,
                 'end' => $event->end,
                 'allDay' => $allday,
                 'url' => Router::url('/events/view/'.$event->id, true),

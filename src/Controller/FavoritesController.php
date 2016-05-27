@@ -10,6 +10,27 @@ use App\Controller\AppController;
  */
 class FavoritesController extends AppController
 {
+    public function isAuthorized($user)
+    {
+        $action = $this->request->params['action'];
+
+        // The add and index actions are always allowed.
+        if (in_array($action, ['index', 'add'])) {
+            return true;
+        }
+        // All other actions require an id.
+        if (empty($this->request->params['pass'][0])) {
+            return false;
+        }
+
+        // Check that the bookmark belongs to the current user.
+        $id = $this->request->params['pass'][0];
+        $favorite = $this->Favorites->get($id);
+        if ($favorite->user_id == $user['id']) {
+            return true;
+        }
+        return parent::isAuthorized($user);
+    }
 
     /**
      * Index method
@@ -19,7 +40,10 @@ class FavoritesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Users']
+            'contain' => ['Users'],
+            'conditions' => [
+                'Favorites.user_id' => $this->Auth->user('id'),
+            ]
         ];
         $favorites = $this->paginate($this->Favorites);
 
@@ -63,8 +87,9 @@ class FavoritesController extends AppController
             }
         }
         $users = $this->Favorites->Users->find('list', ['limit' => 200]);
-        $events = $this->Favorites->Events->find('list', ['limit' => 200]);
-        $this->set(compact('favorite', 'events'));
+        // $events = $this->Favorites->Events->find('list', ['limit' => 200]);
+        // $this->set(compact('favorite', 'events'));
+        $this->set(compact('favorite'));
         $this->set('_serialize', ['favorite']);
     }
 

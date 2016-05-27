@@ -48,7 +48,7 @@ $this->prepend('scriptBottom', $this->Html->script('https://cdnjs.cloudflare.com
     },
   });
   $('input[id="eventrangetime"]').on('apply.daterangepicker', function(ev, picker) {
-    $(this).val(picker.startDate.format('YYYY/MM/DD HH:mm') + ' から ' + picker.endDate.format('YYYY/MM/DD HH:mm'));
+    $(this).val(picker.startDate.format('YYYY/MM/DD HH:mm') + ' ～ ' + picker.endDate.format('YYYY/MM/DD HH:mm'));
     $('input[name="start"]').val(picker.startDate.format('YYYY/MM/DD HH:mm'));
     $('input[name="end"]').val(picker.endDate.format('YYYY/MM/DD HH:mm'));
   });
