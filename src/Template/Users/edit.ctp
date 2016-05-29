@@ -37,7 +37,8 @@ $this->end();
     <?php
     echo $this->User->inputName($this);
     echo $this->User->inputLoginAccount($this);
-    echo $this->User->inputPassword($this);
+    echo $this->User->inputPasswordNew($this);
+    echo $this->User->inputPasswordConfirm($this);
     ?>
 </fieldset>
 <?= $this->Form->button(__("Save")); ?>

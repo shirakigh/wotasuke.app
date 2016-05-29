@@ -377,10 +377,13 @@ msgid "ph_nickname"
 msgstr "ニックネーム"
 
 msgid "ph_password"
-msgstr "安心してください！暗号化してますよ！"
+msgstr "安心してください！暗号化しますよ！"
 
 msgid "ph_password_confirm"
 msgstr "もう一度入力してください"
+
+msgid "ph_password_new"
+msgstr "新しいパスワード(変更する場合は入力)"
 
 msgid "ph_place"
 msgstr "（　´ Д ｀）＜そのうちGoogleMapと連動したいぽ"
@@ -414,6 +417,9 @@ msgstr "パスワード"
 
 msgid "password_confirm"
 msgstr "パスワード(確認用)"
+
+msgid "password_new"
+msgstr "新しいパスワード"
 
 msgid "welcome_message"
 msgstr "（　´ Д ｀）＜ゆっくりしていってね！＞（●´ー｀●）"

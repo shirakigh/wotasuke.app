@@ -75,6 +75,14 @@ class UsersTable extends Table
                 'message' => __('not_confirm'),
             ]);
 
+        $validator
+            ->allowEmpty('password_new', 'update')
+            ->add('password_new', 'comWith', [
+                // 確認用と同じかどうか
+                'rule' => ['compareWith', 'password_confirm'],
+                'message' => __('not_confirm'),
+            ]);
+
         return $validator;
     }
 

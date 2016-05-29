@@ -109,6 +109,7 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
+                $this->Auth->setUser($user->toArray());
                 $this->Flash->success(__('user_added'));
                 return $this->redirect([
                     'controller' => 'Events',
@@ -136,9 +137,14 @@ class UsersController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->data);
+            // 新しいパスワードが入力されていたらセッターでパスワードをセット
+            if (!empty($this->request->data['password_new'])) {
+                $user->set('password', $this->request->data['password_new']);
+            }
             if ($this->Users->save($user)) {
+                $this->Auth->setUser($user->toArray());
                 $this->Flash->success(__('saved'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view', $id]);
             } else {
                 $this->Flash->error(__('could_not_be_saved'));
             }
