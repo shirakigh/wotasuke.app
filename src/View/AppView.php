@@ -36,5 +36,6 @@ class AppView extends UIView
         $this->loadHelper('User');
         $this->loadHelper('Event');
         $this->loadHelper('Favorite');
+        $this->loadHelper('Image');
     }
 }

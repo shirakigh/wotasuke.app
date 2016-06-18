@@ -224,3 +224,5 @@ Type::build('datetime')
 Plugin::load('BootstrapUI');
 
 Plugin::load('Cake/Localized');
+
+Configure::load("const");

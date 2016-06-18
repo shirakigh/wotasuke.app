@@ -23,14 +23,14 @@
           <!-- Menu Toggle Button -->
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <!-- The user image in the navbar-->
-            <?= $this->Html->image('thumnail/shiraki.png', ['class' => 'user-image']); ?>
+            <?= $this->Html->image($this->request->session()->read('user_icon'), ['class' => 'user-image']); ?>
             <!-- hidden-xs hides the username on small devices so only the image appears. -->
             <span class="hidden-xs">Login：<?= $this->request->session()->read('Auth.User.name'); ?></span>
           </a>
           <ul class="dropdown-menu">
             <!-- The user image in the menu -->
             <li class="user-header">
-              <?= $this->Html->image('thumnail/shiraki.png', ['class' => 'img-circle']); ?>
+              <?= $this->Html->image($this->request->session()->read('user_icon'), ['class' => 'img-circle']); ?>
               <p>
                 <?= $this->request->session()->read('Auth.User.name'); ?>
               </p>

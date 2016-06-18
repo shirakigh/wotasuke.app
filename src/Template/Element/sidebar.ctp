@@ -8,7 +8,7 @@
 		<!-- Sidebar user panel (optional) -->
 		<div class="user-panel">
 			<div class="pull-left image">
-				<?= $this->Html->image('thumnail/shiraki.png', ['class' => 'img-circle']); ?>
+				<?= $this->Html->image($this->request->session()->read('user_icon'), ['class' => 'img-circle']); ?>
 			</div>
 			<div class="pull-left info">
 				<p><?= $this->request->session()->read('Auth.User.name'); ?></p>

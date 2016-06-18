@@ -367,6 +367,9 @@ msgstr "← をクリックして色を選択してください"
 msgid "ph_favorite_name"
 msgstr "名前"
 
+msgid "ph_image_user"
+msgstr "アイコンに使うプロフィール画像を選択してください"
+
 msgid "ph_login_account"
 msgstr "ログインID"
 
@@ -406,6 +409,9 @@ msgid "previous"
 msgstr "前のページ"
 
 # Users -----------------------
+msgid "image_user"
+msgstr "アイコン画像"
+
 msgid "login_account"
 msgstr "ログインID"
 

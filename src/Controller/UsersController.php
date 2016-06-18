@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Utility\Hash;
 
 /**
  * Users Controller
@@ -10,6 +11,11 @@ use App\Controller\AppController;
  */
 class UsersController extends AppController
 {
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('ImageProcess');
+    }
 
     public function isAuthorized($user)
     {
@@ -63,7 +69,9 @@ class UsersController extends AppController
       if($this->request->is('post')){
         $user = $this->Auth->identify();
         if($user){
-          $this->Auth->setUser($user);
+            $this->Auth->setUser($user);
+            // アイコン画像名をセッションに追加
+            $this->_writeIconSession($user['images'][0]['name']);
           return $this->redirect($this->Auth->redirectUrl());
         }
         $this->Flash->error(__('login_failed'));
@@ -107,16 +115,28 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
+            // 画像がアップロードされたら画像の保存処理を行う
+            if(!empty($this->request->data['up_img']['name'])) {
+                // 画像の保存する
+                $this->ImageProcess->generate($this->request, IMAGE_USER_ICON);
+            }
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
                 $this->Auth->setUser($user->toArray());
-                $this->Flash->success(__('user_added'));
-                return $this->redirect([
-                    'controller' => 'Events',
-                    'action' => 'index'
-                ]);
-            } else {
-                $this->Flash->error(__('could_not_be_saved'));
+                // Imagesテーブルに保存
+                $result = $this->ImageProcess->saveImages($this->request->data['image'], $this->Auth->user('id'));
+                if ($result) {
+                    //セッションに登録
+                    $this->Flash->success(__('user_added'));
+                    // アイコン画像名をセッションに追加
+                    $this->_writeIconSession($this->request->data['image']['name']);
+                    return $this->redirect([
+                        'controller' => 'Events',
+                        'action' => 'index'
+                    ]);
+                } else {
+                    $this->Flash->error(__('could_not_be_saved'));
+                }
             }
         }
         $this->set(compact('user'));
@@ -133,9 +153,17 @@ class UsersController extends AppController
     public function edit($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => []
+            'finder' => 'IncludeIcon',
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            // 画像がアップロードされたら画像の保存処理を行う
+            if(!empty($this->request->data['up_img']['name'])) {
+                // 画像を保存する
+                $this->ImageProcess->generate($this->request, IMAGE_USER_ICON);
+                $image = Hash::merge($this->request->data['images'][0], $this->request->data['image']);
+                $this->request->data['images'][0] = $image;
+            }
+
             $user = $this->Users->patchEntity($user, $this->request->data);
             // 新しいパスワードが入力されていたらセッターでパスワードをセット
             if (!empty($this->request->data['password_new'])) {
@@ -143,6 +171,8 @@ class UsersController extends AppController
             }
             if ($this->Users->save($user)) {
                 $this->Auth->setUser($user->toArray());
+                // アイコン画像名をセッションに追加
+                $this->_writeIconSession($this->request->data['images'][0]['name']);
                 $this->Flash->success(__('saved'));
                 return $this->redirect(['action' => 'view', $id]);
             } else {
@@ -170,5 +200,15 @@ class UsersController extends AppController
             $this->Flash->error(__('could_not_be_deleted'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+
+    protected function _writeIconSession($name)
+    {
+        // 名前が空だったらNOIMAGE画像をセットする
+        if (empty($name)) {
+            $this->request->session()->write('user_icon', THUMBNAIL_PATH.'noimage_user.png');
+        } else {
+            $this->request->session()->write('user_icon', THUMBNAIL_PATH.$name);
+        }
     }
 }

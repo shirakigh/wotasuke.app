@@ -48,6 +48,7 @@ class AppController extends Controller
             'authorize'=> 'Controller',
             'authenticate' => [
   		        'Form' => [
+                    'finder' => 'Auth',
       			    'fields' => [
       				'username' => 'login_account',
       				'password' => 'password'

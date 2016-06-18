@@ -38,6 +38,10 @@ class UsersTable extends Table
         $this->hasMany('Favorites', [
             'foreignKey' => 'user_id'
         ]);
+
+        $this->hasMany('Images', [
+            'foreignKey' => 'user_id'
+        ]);
     }
 
     /**
@@ -98,5 +102,28 @@ class UsersTable extends Table
         $rules->add($rules->isUnique(['id']));
         $rules->add($rules->isUnique(['login_account']));
         return $rules;
+    }
+
+    public function findAuth(\Cake\ORM\Query $query, array $options)
+    {
+        $query
+            ->contain([
+                'Images' => function (\Cake\ORM\Query $contain) {
+                    return $contain->select(['name', 'user_id'])
+                    ->where(['Images.type' => IMAGE_USER_ICON]);
+                }
+            ]);
+        return $query;
+    }
+
+    public function findIncludeIcon(\Cake\ORM\Query $query, array $options)
+    {
+        $query
+            ->contain([
+                'Images' => function (\Cake\ORM\Query $contain) {
+                    return $contain->where(['Images.type' => IMAGE_USER_ICON]);
+                }
+            ]);
+        return $query;
     }
 }

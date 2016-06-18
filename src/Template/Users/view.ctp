@@ -10,7 +10,7 @@ $this->extend('/Layout/twitterbootstrap/dashboard');
       <!-- Profile Image -->
       <div class="box box-primary">
         <div class="box-body box-profile">
-          <?= $this->Html->image('thumnail/shiraki.png', ['class' => 'profile-user-img img-responsive img-circle']); ?>
+          <?= $this->Html->image($this->request->session()->read('user_icon'), ['class' => 'profile-user-img img-responsive img-circle']); ?>
           <h3 class="profile-username text-center"><?= h($user->name) ?></h3>
 
           <ul class="list-group list-group-unbordered">
