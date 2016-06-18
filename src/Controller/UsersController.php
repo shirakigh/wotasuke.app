@@ -71,7 +71,7 @@ class UsersController extends AppController
         if($user){
             $this->Auth->setUser($user);
             // アイコン画像名をセッションに追加
-            $this->_writeIconSession($user['images'][0]['name']);
+            $this->_writeIconSession($user);
           return $this->redirect($this->Auth->redirectUrl());
         }
         $this->Flash->error(__('login_failed'));
@@ -122,21 +122,24 @@ class UsersController extends AppController
             }
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
+                // ログインユーザセッションの上書き
                 $this->Auth->setUser($user->toArray());
-                // Imagesテーブルに保存
-                $result = $this->ImageProcess->saveImages($this->request->data['image'], $this->Auth->user('id'));
-                if ($result) {
-                    //セッションに登録
-                    $this->Flash->success(__('user_added'));
-                    // アイコン画像名をセッションに追加
-                    $this->_writeIconSession($this->request->data['image']['name']);
-                    return $this->redirect([
-                        'controller' => 'Events',
-                        'action' => 'index'
-                    ]);
-                } else {
-                    $this->Flash->error(__('could_not_be_saved'));
+                if(!empty($this->request->data['up_img']['name'])) {
+                    // Imagesテーブルに保存
+                    $result = $this->ImageProcess->saveImages($this->request->data['image'], $this->Auth->user('id'));
+                    if ($result) {
+                        $this->request->session()->write('user_icon', THUMBNAIL_PATH.$result->name);
+                    }
                 }
+
+                //セッションに登録
+                $this->Flash->success(__('user_added'));
+                return $this->redirect([
+                    'controller' => 'Events',
+                    'action' => 'index'
+                ]);
+            } else {
+                $this->Flash->error(__('could_not_be_saved'));
             }
         }
         $this->set(compact('user'));
@@ -172,7 +175,7 @@ class UsersController extends AppController
             if ($this->Users->save($user)) {
                 $this->Auth->setUser($user->toArray());
                 // アイコン画像名をセッションに追加
-                $this->_writeIconSession($this->request->data['images'][0]['name']);
+                $this->_writeIconSession($user);
                 $this->Flash->success(__('saved'));
                 return $this->redirect(['action' => 'view', $id]);
             } else {
@@ -202,13 +205,13 @@ class UsersController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    protected function _writeIconSession($name)
+    protected function _writeIconSession($user)
     {
         // 名前が空だったらNOIMAGE画像をセットする
-        if (empty($name)) {
+        if (empty($user['images'])) {
             $this->request->session()->write('user_icon', THUMBNAIL_PATH.'noimage_user.png');
         } else {
-            $this->request->session()->write('user_icon', THUMBNAIL_PATH.$name);
+            $this->request->session()->write('user_icon', THUMBNAIL_PATH.$user['images'][0]['name']);
         }
     }
 }
