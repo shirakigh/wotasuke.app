@@ -44,6 +44,7 @@ class ImageProcessComponent extends Component
         // サムネイルの保存
         $thumb_height = round( $original_height * $thumb_width / $original_width );
         if($image['ext'] === 'jpg') $original_image = imagecreatefromjpeg($original_file);
+        if($image['ext'] === 'jpeg') $original_image = imagecreatefromjpeg($original_file);
         if($image['ext'] === 'png') $original_image = imagecreatefrompng($original_file);
         if($image['ext'] === 'gif') $original_image = imagecreatefromgif($original_file);
         $thumb_image = imagecreatetruecolor($thumb_width, $thumb_height);
@@ -51,6 +52,7 @@ class ImageProcessComponent extends Component
             $thumb_width, $thumb_height,
             $original_width, $original_height);
         if($image['ext'] === 'jpg') imagejpeg($thumb_image, $thumb_path.$image['name']);
+        if($image['ext'] === 'jpeg') imagejpeg($thumb_image, $thumb_path.$image['name']);
         if($image['ext'] === 'png') imagepng($thumb_image, $thumb_path.$image['name']);
         if($image['ext'] === 'gif') imagegif($thumb_image, $thumb_path.$image['name']);
     }
