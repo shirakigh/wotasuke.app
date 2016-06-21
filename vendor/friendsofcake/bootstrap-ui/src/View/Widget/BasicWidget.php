@@ -32,7 +32,7 @@ class BasicWidget extends \Cake\View\Widget\BasicWidget
             'prepend' => null,
             'append' => null,
         ];
-        if ($data['type'] !== 'hidden') {
+        if (($data['type'] !== 'hidden') && (empty($data['noclass']))) {
             $data = $this->injectClasses('form-control', $data);
         }
 

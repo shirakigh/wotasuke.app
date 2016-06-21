@@ -34,14 +34,53 @@ class EventHelper extends Helper {
         return $string;
     }
 
-    public function inputEventRange($obj) {
-        $string = $obj->Form->input('event_range', [
+    public function inputStartDate($obj) {
+        $string = $obj->Form->input('start_date', [
+            'type' => 'text',
             'label' => false,
-            'class' => 'form-control pull-left',
-            'id' => 'eventrangetime',
-            'placeholder' => __('ph_range'),
+            'class' => 'date start',
+            'noclass' => true,
             'templates' => [
-                'inputContainer' => '<div class="form-group input-group"><div class="input-group-addon"><i class="fa fa-calendar"></i></div>{{content}}</div>',
+                'inputContainer' => '{{content}}',
+            ]
+        ]);
+        return $string;
+    }
+
+    public function inputStartTime($obj) {
+        $string = $obj->Form->input('start_time', [
+            'type' => 'text',
+            'label' => false,
+            'class' => 'time start',
+            'noclass' => true,
+            'templates' => [
+                'inputContainer' => '{{content}}',
+            ]
+        ]);
+        return $string;
+    }
+
+    public function inputEndDate($obj) {
+        $string = $obj->Form->input('end_date', [
+            'type' => 'text',
+            'label' => false,
+            'class' => 'date end',
+            'noclass' => true,
+            'templates' => [
+                'inputContainer' => '{{content}}',
+            ]
+        ]);
+        return $string;
+    }
+
+    public function inputEndTime($obj) {
+        $string = $obj->Form->input('end_time', [
+            'type' => 'text',
+            'label' => false,
+            'class' => 'time end',
+            'noclass' => true,
+            'templates' => [
+                'inputContainer' => '{{content}}',
             ]
         ]);
         return $string;
@@ -49,14 +88,14 @@ class EventHelper extends Helper {
 
     public function inputStart($obj) {
         $string = $obj->Form->hidden('start', [
-            'type' => 'text'
+            'type' => 'text',
         ]);
         return $string;
     }
 
     public function inputEnd($obj) {
         $string = $obj->Form->hidden('end', [
-            'type' => 'text'
+            'type' => 'text',
         ]);
         return $string;
     }

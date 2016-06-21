@@ -36,13 +36,40 @@ class Event extends Entity
         'id' => false,
     ];
 
-    protected function _getEventRange()
+    protected function _getStartDate()
     {
         if (!empty($this->_properties)) {
-            return $this->_properties['start'] . ' ～ ' . $this->_properties['end'];
+            return date("Y-m-d", strtotime($this->_properties['start']));
         } else {
             return null;
         }
     }
-    
+
+    protected function _getEndDate()
+    {
+        if (!empty($this->_properties)) {
+            return date("Y-m-d", strtotime($this->_properties['end']));
+        } else {
+            return null;
+        }
+    }
+
+    protected function _getStartTime()
+    {
+        if (!empty($this->_properties)) {
+            return date("H:i:s", strtotime($this->_properties['start']));
+        } else {
+            return null;
+        }
+    }
+
+    protected function _getEndTime()
+    {
+        if (!empty($this->_properties)) {
+            return date("H:i:s", strtotime($this->_properties['end']));
+        } else {
+            return null;
+        }
+    }
+
 }

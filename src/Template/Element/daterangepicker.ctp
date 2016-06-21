@@ -29,12 +29,32 @@ $this->prepend('scriptBottom', $this->Html->script('https://cdnjs.cloudflare.com
     $(this).val(picker.startDate.format('YYYY/MM/DD'));
   });
 
+  // イベント日時用 SinglePicker
+  $('#eventStart').daterangepicker({
+    "autoUpdateInput": false,
+    "showDropdowns": true,
+    "singleDatePicker": true,
+    "minDate": "1970/01/01",
+    "timePicker": true,
+    "timePickerIncrement": 15,
+    "timePicker24Hour": true,
+    "locale": {
+        "format": "YYYY/MM/DD HH:mm",
+        "applyLabel": "決定",
+        "cancelLabel": "キャンセル",
+        "firstDay": 1,
+    },
+  });
+  $('input[id="eventStart"]').on('apply.daterangepicker', function(ev, picker) {
+    $(this).val(picker.startDate.format('YYYY/MM/DD HH:mm'));
+  });
+
   //イベント日時用 DateRangePicker
   $('#eventrangetime').daterangepicker({
     autoUpdateInput: false,
     "showDropdowns": true,
     "timePicker": true,
-    "timePickerIncrement": 30,
+    "timePickerIncrement": 15,
     "timePicker24Hour": true,
     "locale": {
         "format": "YYYY/MM/DD HH:mm",
