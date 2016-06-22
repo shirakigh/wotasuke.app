@@ -18,7 +18,7 @@ $this->prepend('scriptBottom', $this->Html->script('https://code.jquery.com/ui/1
 <div type="hidden"
      id="api-url"
      style="display:none;"
-     data-val="<?= $this->url->build('/ajax/feed/', true); ?>">
+     data-val="<?= $this->url->build('/ajax/feed/'.$this->request->session()->read('Auth.User.id').'/', true); ?>">
 </div>
 
 
