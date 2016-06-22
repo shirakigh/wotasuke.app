@@ -65,11 +65,12 @@ class UserHelper extends Helper {
         return $string;
     }
 
-    public function showUserIcon($image) {
+    public function showUserIcon($image, $large = false) {
+        if ($large) { $path = IMAGE_PATH; } else { $path = THUMBNAIL_PATH; };
         if (empty($image)) {
-            $string = THUMBNAIL_PATH.'noimage_user.png';
+            $string = $path.'noimage_user.png';
         } else {
-            $string = THUMBNAIL_PATH.$image[0]['name'];
+            $string = $path.$image[0]['name'];
         }
         return $string;
     }
