@@ -10,25 +10,19 @@ $this->start('tb_actions');
 <table class="table table-striped" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
+            <th> </th>
             <th><?= $this->Paginator->sort(__('name')); ?></th>
-            <th><?= $this->Paginator->sort(__('login_account')); ?></th>
             <th><?= $this->Paginator->sort(__('created')); ?></th>
             <th><?= $this->Paginator->sort(__('modified')); ?></th>
-            <th class="actions"><?= __('Actions'); ?></th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($users as $user): ?>
         <tr>
-            <td><?= h($user->name) ?></td>
-            <td><?= h($user->login_account) ?></td>
+            <td><?= $this->Html->image($this->User->showUserIcon($user['images']), ['class' => 'img-circle img-sm']); ?></td>
+            <td><?= $this->Html->link(h($user->name), ['action' => 'view', $user->id]); ?></td>
             <td><?= h($user->created) ?></td>
             <td><?= h($user->modified) ?></td>
-            <td class="actions">
-                <?= $this->Html->link('', ['action' => 'view', $user->id], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
-                <?= $this->Html->link('', ['action' => 'edit', $user->id], ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
-                <?= $this->Form->postLink('', ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'title' => __('Delete'), 'class' => 'btn btn-default glyphicon glyphicon-trash']) ?>
-            </td>
         </tr>
         <?php endforeach; ?>
     </tbody>

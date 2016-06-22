@@ -32,7 +32,8 @@ class AjaxController extends AppController {
             'conditions' => [
                 'Events.start >=' => $this->request->query('start'),
                 'Events.start <=' => $this->request->query('end'),
-                'Events.user_id' => $this->Auth->user('id'),
+                'Events.user_id' => $id,
+                //'Events.user_id' => $this->Auth->user('id'),
             ],
             'contain' => ['Favorites'],
         ]);

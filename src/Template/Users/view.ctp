@@ -37,7 +37,7 @@ $this->extend('/Layout/twitterbootstrap/dashboard');
         </ul>
         <div class="tab-content">
           <div class="active tab-pane" id="activity">
-            <?= $this->element('calendar'); ?>
+            <?= $this->element('calendar_readonly'); ?>
           </div><!-- /.tab-pane -->
           <div class="tab-pane" id="timeline">
             <!-- The timeline -->

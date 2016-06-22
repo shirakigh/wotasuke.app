@@ -43,7 +43,7 @@ class UsersController extends AppController
      */
     public function beforeFilter(\Cake\Event\Event $event) {
       parent::beforeFilter($event);
-      $this->Auth->allow(['add', 'logout']);
+      $this->Auth->allow(['add', 'logout', 'index']);
     }
 
     /**
@@ -53,6 +53,9 @@ class UsersController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'finder' => 'IncludeIcon'
+        ];
         $users = $this->paginate($this->Users);
 
         $this->set(compact('users'));
