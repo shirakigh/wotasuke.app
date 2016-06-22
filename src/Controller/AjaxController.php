@@ -30,15 +30,25 @@ class AjaxController extends AppController {
         $this->loadModel('Events');
         $events = $this->Events->find('all',[
             'conditions' => [
-                'OR' => [
-                    ['Events.start >=' => $this->request->query('start')],
-                    ['Events.end <=' => $this->request->query('end')],
-                ],
-                'OR' => [
-                    ['Events.start <=' => $this->request->query('start')],
-                    ['Events.end >=' => $this->request->query('end')],
-                ],
                 'Events.user_id' => $id,
+                'OR' => [
+                    [   //startが当月でendが翌月以降
+                        ['Events.start >=' => $this->request->query('start')],
+                        ['Events.end >=' => $this->request->query('end')],
+                    ],
+                    [   //startが前月以前でendが翌月以降
+                        ['Events.start <=' => $this->request->query('start')],
+                        ['Events.end >=' => $this->request->query('end')],
+                    ],
+                    [   //startが前月以前でendが当月
+                        ['Events.start <=' => $this->request->query('start')],
+                        ['Events.end <=' => $this->request->query('end')],
+                    ],
+                    [   //startもendも当月(通常の予定)
+                        ['Events.start >=' => $this->request->query('start')],
+                        ['Events.end <=' => $this->request->query('end')],
+                    ],
+                ]
             ],
             'contain' => ['Favorites'],
         ]);
