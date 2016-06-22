@@ -30,10 +30,15 @@ class AjaxController extends AppController {
         $this->loadModel('Events');
         $events = $this->Events->find('all',[
             'conditions' => [
-                'Events.start >=' => $this->request->query('start'),
-                'Events.start <=' => $this->request->query('end'),
+                'OR' => [
+                    ['Events.start >=' => $this->request->query('start')],
+                    ['Events.end <=' => $this->request->query('end')],
+                ],
+                'OR' => [
+                    ['Events.start <=' => $this->request->query('start')],
+                    ['Events.end >=' => $this->request->query('end')],
+                ],
                 'Events.user_id' => $id,
-                //'Events.user_id' => $this->Auth->user('id'),
             ],
             'contain' => ['Favorites'],
         ]);

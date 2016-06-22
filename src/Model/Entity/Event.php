@@ -72,4 +72,12 @@ class Event extends Entity
         }
     }
 
+    protected function _getEventRange()
+    {
+        if (!empty($this->_properties)) {
+            return $this->_properties['start'] . ' ～ ' . $this->_properties['end'];
+        } else {
+            return null;
+        }
+    }
 }
