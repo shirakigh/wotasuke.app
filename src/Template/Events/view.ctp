@@ -1,35 +1,15 @@
 <?php
 $this->extend('/Layout/twitterbootstrap/dashboard');
-
-
-$this->start('tb_actions');
 ?>
-<li><?= $this->Html->link(__('Edit Event'), ['action' => 'edit', $event->id]) ?> </li>
-<li><?= $this->Form->postLink(__('Delete Event'), ['action' => 'delete', $event->id], ['confirm' => __('Are you sure you want to delete # {0}?', $event->title)]) ?> </li>
-<li><?= $this->Html->link(__('List Events'), ['action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Event'), ['action' => 'add']) ?> </li>
-<li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
-<?php
-$this->end();
 
-$this->start('tb_sidebar');
-?>
-<ul class="nav nav-sidebar">
-<li><?= $this->Html->link(__('Edit Event'), ['action' => 'edit', $event->id]) ?> </li>
-<li><?= $this->Form->postLink(__('Delete Event'), ['action' => 'delete', $event->id], ['confirm' => __('Are you sure you want to delete # {0}?', $event->title)]) ?> </li>
-<li><?= $this->Html->link(__('List Events'), ['action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Event'), ['action' => 'add']) ?> </li>
-<li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
-</ul>
-<?php
-$this->end();
-?>
 <div class="panel panel-default">
     <!-- Panel header -->
     <div class="panel-heading">
-        <h3 class="panel-title"><?= h($event->title) ?></h3>
+        <h3 class="panel-title">
+          <?= h($event->title) ?>
+          <?= $this->Html->link('', ['action' => 'edit', $event->id], ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
+          <?= $this->Form->postLink('', ['action' => 'delete', $event->id], ['confirm' => __('Are you sure you want to delete # {0}?', $event->title), 'title' => __('Delete'), 'class' => 'btn btn-default glyphicon glyphicon-trash']) ?>
+        </h3>
     </div>
     <table class="table table-striped" cellpadding="0" cellspacing="0">
         <tr>
@@ -67,6 +47,12 @@ $this->end();
         <tr>
             <td><?= __('modified') ?></td>
             <td><?= h($event->modified) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('related_favorites') ?></td>
+            <td>
+              <?= $this->Favorite->showFavorite($event, true); ?>
+            </td>
         </tr>
     </table>
 </div>

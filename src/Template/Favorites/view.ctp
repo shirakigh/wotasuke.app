@@ -1,35 +1,7 @@
 <?php
 $this->extend('/Layout/twitterbootstrap/dashboard');
-
-
-$this->start('tb_actions');
 ?>
-<li><?= $this->Html->link(__('Edit Favorite'), ['action' => 'edit', $favorite->id]) ?> </li>
-<li><?= $this->Form->postLink(__('Delete Favorite'), ['action' => 'delete', $favorite->id], ['confirm' => __('Are you sure you want to delete # {0}?', $favorite->name)]) ?> </li>
-<li><?= $this->Html->link(__('List Favorites'), ['action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Favorite'), ['action' => 'add']) ?> </li>
-<li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
-<li><?= $this->Html->link(__('List Events'), ['controller' => 'Events', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Event'), ['controller' => 'Events', 'action' => 'add']) ?> </li>
-<?php
-$this->end();
 
-$this->start('tb_sidebar');
-?>
-<ul class="nav nav-sidebar">
-<li><?= $this->Html->link(__('Edit Favorite'), ['action' => 'edit', $favorite->id]) ?> </li>
-<li><?= $this->Form->postLink(__('Delete Favorite'), ['action' => 'delete', $favorite->id], ['confirm' => __('Are you sure you want to delete # {0}?', $favorite->name)]) ?> </li>
-<li><?= $this->Html->link(__('List Favorites'), ['action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Favorite'), ['action' => 'add']) ?> </li>
-<li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
-<li><?= $this->Html->link(__('List Events'), ['controller' => 'Events', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Event'), ['controller' => 'Events', 'action' => 'add']) ?> </li>
-</ul>
-<?php
-$this->end();
-?>
 <div class="panel panel-default">
     <!-- Panel header -->
     <div class="panel-heading">

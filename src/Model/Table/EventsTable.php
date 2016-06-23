@@ -84,6 +84,19 @@ class EventsTable extends Table
         return $validator;
     }
 
+    public function findAllAssociation(\Cake\ORM\Query $query, array $options)
+    {
+        $query
+            ->contain([
+                'Favorites',
+                'Images' => function (\Cake\ORM\Query $contain) {
+                    return $contain->where(['Images.type' => EVENT]);
+                }
+
+            ]);
+        return $query;
+    }
+
     /**
      * Returns a rules checker object that will be used for validating
      * application integrity.

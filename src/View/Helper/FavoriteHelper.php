@@ -52,4 +52,19 @@ class FavoriteHelper extends Helper {
         ]);
         return $string;
     }
+
+    public function showFavorite($event, $isShowMsg = False) {
+        $string = '';
+        if (!empty($event->favorites)):
+            foreach ($event->favorites as $favorites):
+                $string .= "<span class='label margin' style='background-color:".h($favorites->bgcolor)."'>";
+                $string .= h($favorites->nickname);
+                $string .= "</span>";
+            endforeach;
+        else:
+            if ($isShowMsg): $string = __("no_related_Favorites"); endif;
+        endif;
+
+        return $string;
+    }
 }

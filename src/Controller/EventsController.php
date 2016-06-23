@@ -41,7 +41,7 @@ class EventsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Users'],
+            'contain' => ['Users', 'Favorites'],
             'conditions' => [
                 'Events.user_id' => $this->Auth->user('id'),
             ]
@@ -125,7 +125,7 @@ class EventsController extends AppController
             'conditions' => [
                 'Favorites.user_id' => $this->Auth->user('id'),
             ],
-        ]);        
+        ]);
         $this->set(compact('event', 'favorites'));
         $this->set('_serialize', ['event']);
     }

@@ -18,7 +18,7 @@ echo $this->element('calendar');
         <?php foreach ($events as $event): ?>
         <tr>
           <td><?= h($event->event_range) ?></td>
-          <td><?= h($event->title) ?></td>
+          <td><?= h($event->title) ?><?= $this->Favorite->showFavorite($event); ?></td>
           <td><?= h($event->place) ?></td>
           <td class="hidden-xs"><?= h($event->is_allday) ?></td>
           <td class="hidden-xs"><?= h($event->is_private) ?></td>

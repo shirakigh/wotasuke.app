@@ -368,7 +368,7 @@ msgid "ph_favorite_name"
 msgstr "名前"
 
 msgid "ph_image_user"
-msgstr "アイコンに使うプロフィール画像を選択してください"
+msgstr "なるべく正方形の画像がおすすめです"
 
 msgid "ph_login_account"
 msgstr "ログインID"
@@ -448,6 +448,9 @@ msgstr "終日"
 
 msgid "is_private"
 msgstr "非公開"
+
+msgid "no_related_Favorites"
+msgstr "お気に入りは登録されていません"
 
 msgid "place"
 msgstr "場所"
