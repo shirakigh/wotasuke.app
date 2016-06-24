@@ -72,6 +72,24 @@ class Event extends Entity
         }
     }
 
+    protected function _getStart()
+    {
+        if (!empty($this->_properties)) {
+            return date("Y-m-d H:i", strtotime($this->_properties['start']));
+        } else {
+            return null;
+        }
+    }
+
+    protected function _getEnd()
+    {
+        if (!empty($this->_properties)) {
+            return date("Y-m-d H:i", strtotime($this->_properties['end']));
+        } else {
+            return null;
+        }
+    }
+
     protected function _getEventRange()
     {
         if (!empty($this->_properties)) {

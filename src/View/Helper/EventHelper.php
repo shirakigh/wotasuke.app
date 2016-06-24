@@ -120,7 +120,6 @@ class EventHelper extends Helper {
             'label' => __('related_favorites'),
             'class' => 'form-control select2',
             'multiple' => 'multiple',
-            'id' => 'eventrangetime',
             'templates' => [
                 'inputContainer' => '<div class="form-group">{{content}}</div>',
             ]
