@@ -32,21 +32,23 @@ class AjaxController extends AppController {
             'conditions' => [
                 'Events.user_id' => $id,
                 'OR' => [
-                    [   //startが当月でendが翌月以降
-                        ['Events.start >=' => $this->request->query('start')],
-                        ['Events.end >=' => $this->request->query('end')],
-                    ],
-                    [   //startが前月以前でendが翌月以降
-                        ['Events.start <=' => $this->request->query('start')],
-                        ['Events.end >=' => $this->request->query('end')],
-                    ],
-                    [   //startが前月以前でendが当月
-                        ['Events.start <=' => $this->request->query('start')],
-                        ['Events.end <=' => $this->request->query('end')],
-                    ],
-                    [   //startもendも当月(通常の予定)
+                    [   //startもendも範囲内(通常の予定)
                         ['Events.start >=' => $this->request->query('start')],
                         ['Events.end <=' => $this->request->query('end')],
+                    ],
+                    [   //startが範囲前でendが範囲内
+                        ['Events.start <=' => $this->request->query('start')],
+                        ['Events.end >=' => $this->request->query('start')],
+                        ['Events.end <=' => $this->request->query('end')],
+                    ],
+                    [   //startが範囲内でendが範囲以降
+                        ['Events.start >=' => $this->request->query('start')],
+                        ['Events.start <=' => $this->request->query('end')],
+                        ['Events.end >=' => $this->request->query('end')],
+                    ],
+                    [   //startが範囲以前でendが範囲以降
+                        ['Events.start <=' => $this->request->query('start')],
+                        ['Events.end >=' => $this->request->query('end')],
                     ],
                 ]
             ],
@@ -71,11 +73,16 @@ class AjaxController extends AppController {
                 }
             }
 
+            $start = $event->start;
+            $date = new DateTime($event->end, new DateTimeZone('UTC'));
+            $date->setTimezone(new DateTimeZone('Asia/Tokyo'));
+            $end = $date->format('Y-m-d\TH:i:s\Z');
+
             $data[] = array(
                 'id' => $event->id,
                 'title'=>$event->title,
-                'start'=> $event->start,
-                'end' => $event->end,
+                'start'=> $start,
+                'end' => $end,
                 'allDay' => $allday,
                 'url' => Router::url('/events/view/'.$event->id, true),
                 'details' => $event->details,

@@ -25,16 +25,16 @@ $(document).ready(function () {
     selectHelper:true,
     events: $('#api-url').data('val'),
 
-    // 終日設定のときはendを日付型でセットし直す
-    eventDataTransform: function　(event) {
-      var copy = $.extend({}, event);
-      if (copy.allDay) {
-        copy.end = moment(new Date(copy.end)).format();
-      }
-
-      console.log(copy, event);
-      return copy;
-    },
+    //終日設定のときはendを日付型でセットし直す
+    // eventDataTransform: function　(event) {
+    //   var copy = $.extend({}, event);
+    //   if (copy.allDay) {
+    //     // copy.end = new Date(copy.end).toISOString();
+    //     // copy.end = moment(new Date(copy.end)).format();
+    //   }
+    //   console.log(copy, event);
+    //   return copy;
+    // },
 
     //ドラッグ後処理
     select: function (start, end) {

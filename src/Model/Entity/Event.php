@@ -98,4 +98,28 @@ class Event extends Entity
             return null;
         }
     }
+
+    protected function _setStart($value)
+    {
+        if (!empty($this->_properties)) {
+            // 終日設定の場合は時間をカットして00:00:00にセットする
+            if ($this->_properties['is_allday']) {
+                return date("Y-m-d", strtotime($value));
+            } else {
+                return $value;
+            }
+        }
+    }
+
+    protected function _setEnd($value)
+    {
+        if (!empty($this->_properties)) {
+            // 終日設定の場合は 23:59:59にセットする
+            if ($this->_properties['is_allday']) {
+                return date("Y-m-d", strtotime($value)).' 23:59:59';
+            } else {
+                return $value;
+            }
+        }
+    }
 }
