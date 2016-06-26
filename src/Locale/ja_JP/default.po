@@ -364,6 +364,9 @@ msgstr "（　´ Д ｀）＜必須項目だぽ。"
 msgid "ph_bgcolor"
 msgstr "← をクリックして色を選択してください"
 
+msgid "ph_birthday"
+msgstr "生誕祭"
+
 msgid "ph_favorite_name"
 msgstr "名前"
 

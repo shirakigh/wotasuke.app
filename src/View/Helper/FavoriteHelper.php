@@ -42,13 +42,18 @@ class FavoriteHelper extends Helper {
     }
 
     public function inputBgcolor($obj) {
-        $string = $obj->Form->input('bgcolor', [
+        $string = $obj->Form->hidden('bgcolor', [
+            'id' => 'bgcolor',
+            'type' => 'text',
+        ]);
+        return $string;
+    }
+
+    public function inputColorPicker($obj) {
+        $string = $obj->Form->input('colorpicker', [
             'label' => false,
+            'class' => 'my-colorpicker',
             'placeholder' => __('ph_bgcolor'),
-            'class' => 'form-control',
-            'templates' => [
-                'inputContainer' => '<div class="form-group input-group my-colorpicker2"><div class="input-group-addon"><i></i></div>{{content}}</div>',
-            ]
         ]);
         return $string;
     }
