@@ -53,6 +53,23 @@ class EventsController extends AppController
     }
 
     /**
+     * Display method
+     *
+     * @param string|null $id Event id.
+     * @return \Cake\Network\Response|null
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function display($id = null)
+    {
+        $event = $this->Events->get($id, [
+            'contain' => ['Users', 'Favorites']
+        ]);
+
+        $this->set('event', $event);
+        $this->set('_serialize', ['event']);
+    }
+
+    /**
      * View method
      *
      * @param string|null $id Event id.

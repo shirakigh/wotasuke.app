@@ -13,7 +13,7 @@ $this->start('tb_actions');
             <th> </th>
             <th><?= $this->Paginator->sort(__('name')); ?></th>
             <th><?= $this->Paginator->sort(__('created')); ?></th>
-            <th><?= $this->Paginator->sort(__('modified')); ?></th>
+            <th class="hidden-xs"><?= $this->Paginator->sort(__('modified')); ?></th>
         </tr>
     </thead>
     <tbody>
@@ -22,7 +22,7 @@ $this->start('tb_actions');
             <td><?= $this->Html->image($this->User->showUserIcon($user['images']), ['class' => 'img-circle img-sm']); ?></td>
             <td><?= $this->Html->link(h($user->name), ['action' => 'view', $user->id]); ?></td>
             <td><?= h($user->created) ?></td>
-            <td><?= h($user->modified) ?></td>
+            <td class="hidden-xs"><?= h($user->modified) ?></td>
         </tr>
         <?php endforeach; ?>
     </tbody>

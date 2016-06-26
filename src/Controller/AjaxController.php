@@ -73,6 +73,13 @@ class AjaxController extends AppController {
                 }
             }
 
+            // ログインユーザのイベントであればviewアクションへ、それ以外ならdisplayアクションへのリンクをセット
+            if ($id == $this->Auth->user('id')) {
+                $url = Router::url('/events/view/'.$event->id, true);
+            } else {
+                $url = Router::url('/events/display/'.$event->id, true);
+            }
+
             $start = $event->start;
             $date = new DateTime($event->end, new DateTimeZone('UTC'));
             $date->setTimezone(new DateTimeZone('Asia/Tokyo'));
@@ -84,7 +91,7 @@ class AjaxController extends AppController {
                 'start'=> $start,
                 'end' => $end,
                 'allDay' => $allday,
-                'url' => Router::url('/events/view/'.$event->id, true),
+                'url' => $url,
                 'details' => $event->details,
                 'color' => $bgcolor,
             );

@@ -17,6 +17,12 @@ $this->extend('/Layout/twitterbootstrap/dashboard');
             <td><?= h($event->title) ?></td>
         </tr>
         <tr>
+            <td><?= __('related_favorites') ?></td>
+            <td>
+              <?= $this->Favorite->showFavorite($event, true); ?>
+            </td>
+        </tr>
+        <tr>
             <td><?= __('place') ?></td>
             <td><?= h($event->place) ?></td>
         </tr>
@@ -47,12 +53,6 @@ $this->extend('/Layout/twitterbootstrap/dashboard');
         <tr>
             <td><?= __('modified') ?></td>
             <td><?= h($event->modified) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('related_favorites') ?></td>
-            <td>
-              <?= $this->Favorite->showFavorite($event, true); ?>
-            </td>
         </tr>
     </table>
 </div>

@@ -3,7 +3,7 @@ $(document).ready(function () {
   $('#calendar').fullCalendar({
     axisFormat: 'H:mm',     // スロットの時間の書式
     columnFormat: {
-      week: 'M/D[(]ddd[)]',
+      week: 'D[(]ddd[)]',
     },
     defaultView: 'month',
     editable: true,
@@ -14,6 +14,7 @@ $(document).ready(function () {
       center: 'title',
       right: 'month,agendaWeek,agendaDay',
     },
+    height: 650,
     lang: 'ja',
     timeFormat: 'H:mm',       // 時間の書式
     timezone: 'Asia/Tokyo',
@@ -21,8 +22,8 @@ $(document).ready(function () {
     weekMode: 'variable',
 
     //ドラッグ可能
-    selectable:true,
-    selectHelper:true,
+    selectable: true,
+    selectHelper: true,
     events: $('#api-url').data('val'),
 
     //終日設定のときはendを日付型でセットし直す

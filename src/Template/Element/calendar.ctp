@@ -23,28 +23,11 @@ $this->prepend('scriptBottom', $this->Html->script('https://code.jquery.com/ui/1
 
 
 <div class="row">
-	<div class="col-md-9">
+	<div class="col-md-12">
 		<div class="box box-primary">
 			<div class="box-body no-padding">
 				<!-- THE CALENDAR -->
 				<div id="calendar"></div>
-			</div><!-- /.box-body -->
-		</div><!-- /. box -->
-	</div><!-- /.col -->
-	<div class="col-md-3">
-		<div class="box box-solid">
-			<div class="box-header with-border">
-				<h4 class="box-title"><?= __('Draggable Events') ?></h4>
-			</div>
-			<div class="box-body">
-				<!-- the events -->
-				<div id="external-events">
-					<div class="external-event bg-green">ごっちん</div>
-					<div class="external-event bg-yellow">さくらさん</div>
-					<div class="external-event bg-aqua">パイセン</div>
-					<div class="external-event bg-red">真野ちゃん</div>
-					<div class="external-event bg-light-blue">艦これ</div>
-				</div>
 			</div><!-- /.box-body -->
 		</div><!-- /. box -->
 	</div><!-- /.col -->
