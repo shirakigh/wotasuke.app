@@ -53,6 +53,7 @@ class AjaxController extends AppController {
                 ]
             ],
             'contain' => ['Favorites'],
+            'distinct' => ['Events.id'],
         ]);
         foreach($events as $event) {
             // 終日フラグの設定
@@ -66,6 +67,7 @@ class AjaxController extends AppController {
             if(empty($event->favorites[0])) {
                 $bgcolor = null;
             } else {
+                $favorites = $event->favorites;
                 if (!is_null($event->favorites[0]->bgcolor)) {
                     $bgcolor = $event->favorites[0]->bgcolor;
                 } else {
@@ -91,9 +93,11 @@ class AjaxController extends AppController {
                 'start'=> $start,
                 'end' => $end,
                 'allDay' => $allday,
-                'url' => $url,
                 'details' => $event->details,
+                'place' => $event->place,
                 'color' => $bgcolor,
+                'url' => $url,
+                'favorites' => $favorites,
             );
         }
     echo json_encode($data);

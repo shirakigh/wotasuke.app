@@ -27,15 +27,26 @@ $(document).ready(function () {
     events: $('#api-url').data('val'),
 
     //終日設定のときはendを日付型でセットし直す
-    // eventDataTransform: function　(event) {
-    //   var copy = $.extend({}, event);
-    //   if (copy.allDay) {
-    //     // copy.end = new Date(copy.end).toISOString();
-    //     // copy.end = moment(new Date(copy.end)).format();
-    //   }
-    //   console.log(copy, event);
-    //   return copy;
-    // },
+    eventDataTransform: function　(event) {
+      var copy = $.extend({}, event);
+      // if (copy.allDay) {
+      //   // copy.end = new Date(copy.end).toISOString();
+      //   // copy.end = moment(new Date(copy.end)).format();
+      // }
+      // console.log(copy, event);
+      // return copy;
+
+      html  = '<tr><th>' + copy.title;
+      // html += "<span class='label margin' style='background-color:" + event.color + "'>";
+      // html += h($favorites->nickname);
+      // html += "</span>";
+      html += '</th></tr>';
+      html += '<tr><td>' + moment(new Date(copy.start)).format() + '～' + moment(new Date(copy.end)).format();
+      html += '</td></tr>';
+      $('#events-list').append(html);
+
+      return event;
+    },
 
     //ドラッグ後処理
     select: function (start, end) {
@@ -51,6 +62,18 @@ $(document).ready(function () {
       }
 
       $('#calendar').fullCalendar('unselect');
+    },
+
+    eventRender: function (event, element) {
+      // html  = '<tr><th>' + event.title;
+      // // html += "<span class='label margin' style='background-color:" + event.color + "'>";
+      // // html += h($favorites->nickname);
+      // // html += "</span>";
+      // html += '</th></tr>';
+      // html += '<tr><td>' + moment(new Date(event.start)).format() + '～' + moment(new Date(event.end)).format();
+      // html += '</td></tr>';
+      // $('#events-list').append(html);
+
     },
 
   });

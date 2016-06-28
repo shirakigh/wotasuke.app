@@ -44,7 +44,11 @@ class EventsController extends AppController
             'contain' => ['Users', 'Favorites'],
             'conditions' => [
                 'Events.user_id' => $this->Auth->user('id'),
-            ]
+            ],
+            'order' => [
+                'Events.start' => 'asc'
+            ],
+            'limit' => 10,
         ];
         $events = $this->paginate($this->Events);
 
