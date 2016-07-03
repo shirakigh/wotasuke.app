@@ -12,6 +12,7 @@ $this->prepend('scriptBottom', $this->Html->script('https://cdnjs.cloudflare.com
 $this->prepend('scriptBottom', $this->Html->script('/plugins/fastclick/fastclick.min'));
 $this->prepend('scriptBottom', $this->Html->script('/plugins/slimScroll/jquery.slimscroll.min'));
 $this->prepend('scriptBottom', $this->Html->script('https://code.jquery.com/ui/1.11.4/jquery-ui.min.js'));
+$this->prepend('scriptBottom', $this->Html->script('https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js'));
 ?>
 
 <!-- FullCalendar Events Get URL -->

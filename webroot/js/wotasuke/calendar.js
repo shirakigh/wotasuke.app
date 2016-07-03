@@ -1,7 +1,6 @@
 // $(document).ready(function () {
 var app = angular.module('myApp', []);
-app.controller('eventCtrl', ['$scope', '$sce', function ($scope, $sce) {
-  events = [];
+app.controller('eventCtrl', function ($scope, $sce) {
 
   $('#calendar').fullCalendar({
     axisFormat: 'H:mm',     // スロットの時間の書式
@@ -80,24 +79,23 @@ app.controller('eventCtrl', ['$scope', '$sce', function ($scope, $sce) {
     // },
 
     //ドラッグ後処理
-    select: function (start, end) {
-      var title = prompt('イベントタイトル:');
-      var eventData;
-      if (title) {
-        eventData = {
-          title: title,
-          start: start,
-          end: end,
-        };
-        $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-      }
+    // select: function (start, end) {
+    //   var title = prompt('イベントタイトル:');
+    //   var eventData;
+    //   if (title) {
+    //     eventData = {
+    //       title: title,
+    //       start: start,
+    //       end: end,
+    //     };
+    //     $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+    //   }
+    //
+    //   $('#calendar').fullCalendar('unselect');
+    // },
 
-      $('#calendar').fullCalendar('unselect');
-    },
+  });   //-----fullCalendar
 
-  });
-
-  }]);
-// }
+});
 
 // });

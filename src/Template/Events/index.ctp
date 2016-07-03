@@ -1,6 +1,5 @@
 <?php
 /* @var $this \Cake\View\View */
-echo $this->Html->script('https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js', array('inline' => false));
 $this->extend('/Layout/twitterbootstrap/dashboard');
 echo $this->element('calendar');
 ?>
