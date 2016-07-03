@@ -37,7 +37,14 @@ $this->extend('/Layout/twitterbootstrap/dashboard');
         </ul>
         <div class="tab-content">
           <div class="active tab-pane" id="activity">
-            <?= $this->element('calendar_readonly'); ?>
+            <?= $this->element('calendar'); ?>
+            <div type="hidden"
+                 id="api-url"
+                 style="display:none;"
+                 data-val="<?= $this->url->build('/ajax/feed/'.$user->id.'/', true); ?>">
+            </div>
+
+
           </div><!-- /.tab-pane -->
           <div class="tab-pane" id="timeline">
             <!-- The timeline -->

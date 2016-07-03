@@ -1,7 +1,5 @@
 // $(document).ready(function () {
-var app = angular.module('myApp', []);
-app.controller('eventCtrl', function ($scope, $sce) {
-
+function generateCalendar($scope, $sce) {
   $('#calendar').fullCalendar({
     axisFormat: 'H:mm',     // スロットの時間の書式
     columnFormat: {
@@ -96,6 +94,11 @@ app.controller('eventCtrl', function ($scope, $sce) {
 
   });   //-----fullCalendar
 
+}
+
+var app = angular.module('myApp', []);
+app.controller('eventCtrl', function ($scope, $sce) {
+  generateCalendar($scope, $sce);
 });
 
 // });

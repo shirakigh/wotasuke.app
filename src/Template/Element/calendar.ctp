@@ -15,14 +15,6 @@ $this->prepend('scriptBottom', $this->Html->script('https://code.jquery.com/ui/1
 $this->prepend('scriptBottom', $this->Html->script('https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js'));
 ?>
 
-<!-- FullCalendar Events Get URL -->
-<div type="hidden"
-     id="api-url"
-     style="display:none;"
-     data-val="<?= $this->url->build('/ajax/feed/'.$this->request->session()->read('Auth.User.id').'/', true); ?>">
-</div>
-
-
 <div class="row">
 	<div class="col-md-12">
 		<div class="box box-primary">
@@ -33,3 +25,17 @@ $this->prepend('scriptBottom', $this->Html->script('https://ajax.googleapis.com/
 		</div><!-- /. box -->
 	</div><!-- /.col -->
 </div><!-- /.row -->
+
+  <table ng-app="myApp" ng-controller="eventCtrl" class="table table-striped" cellpadding="0" cellspacing="0">
+      <tbody>
+        <tr ng-repeat-start="event in events">
+          <th colspan="5"><a ng-href="{{event.url}}">{{event.title}}</a><span ng-bind-html="event.FavHTML"></span></th>
+        </tr>
+        <tr ng-repeat-end>
+          <td>{{event.range}}</td>
+          <td>{{event.place}}</td>
+          <td class="hidden-xs">{{event.showIsAllday}}</td>
+          <td class="hidden-xs">{{event.showIsPrivate}}</td>
+        </tr>
+      </tbody>
+  </table>
