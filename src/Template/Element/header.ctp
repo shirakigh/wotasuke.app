@@ -50,7 +50,7 @@
             <!-- Menu Footer-->
             <li class="user-footer">
               <div class="pull-left">
-                <a href="#" class="btn btn-default btn-flat">Change Password</a>
+                <?= $this->Html->link(__('Change Password'), ['controller' => 'Users', 'action' => 'edit', $this->request->session()->read('Auth.User.id')],['class' => 'btn btn-default btn-flat']) ?>
               </div>
               <div class="pull-right">
                 <?= $this->Html->link(__('Sign out'), ['controller' => 'Users', 'action' => 'logout'],['class' => 'btn btn-default btn-flat']) ?>
