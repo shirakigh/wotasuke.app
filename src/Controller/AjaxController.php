@@ -6,9 +6,18 @@ use Cake\Routing\Router;
 use \DateTime;
 use \DateTimeZone;
 
-
+use App\View\Helper\FavoriteHelper;
+use App\View\Helper\EventHelper;
 
 class AjaxController extends AppController {
+
+    public $helpers = ['Form'];
+
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('RequestHandler');
+    }
 
     public function isAuthorized($user)
     {
@@ -24,31 +33,34 @@ class AjaxController extends AppController {
     public function feed($id=null)
     {
         // 今回はJSONのみを返すためViewのレンダーを無効化
-        $this->autoRender = false;
+        // $this->autoRender = false;
         $this->response->type('json');
         $this->request->allowMethod(['get']);
         $this->loadModel('Events');
+        $rangeStart = date("Y-m-d H:i:s", $this->request->query('start'));
+        $rangeEnd = date("Y-m-d H:i:s", $this->request->query('end'));
+
         $events = $this->Events->find('all',[
             'conditions' => [
                 'Events.user_id' => $id,
                 'OR' => [
                     [   //startもendも範囲内(通常の予定)
-                        ['Events.start >=' => $this->request->query('start')],
-                        ['Events.end <=' => $this->request->query('end')],
+                        ['Events.start >=' => $rangeStart],
+                        ['Events.end <=' => $rangeEnd],
                     ],
                     [   //startが範囲前でendが範囲内
-                        ['Events.start <=' => $this->request->query('start')],
-                        ['Events.end >=' => $this->request->query('start')],
-                        ['Events.end <=' => $this->request->query('end')],
+                        ['Events.start <=' => $rangeStart],
+                        ['Events.end >=' => $rangeStart],
+                        ['Events.end <=' => $rangeEnd],
                     ],
                     [   //startが範囲内でendが範囲以降
-                        ['Events.start >=' => $this->request->query('start')],
-                        ['Events.start <=' => $this->request->query('end')],
-                        ['Events.end >=' => $this->request->query('end')],
+                        ['Events.start >=' => $rangeStart],
+                        ['Events.start <=' => $rangeEnd],
+                        ['Events.end >=' => $rangeEnd],
                     ],
                     [   //startが範囲以前でendが範囲以降
-                        ['Events.start <=' => $this->request->query('start')],
-                        ['Events.end >=' => $this->request->query('end')],
+                        ['Events.start <=' => $rangeStart],
+                        ['Events.end >=' => $rangeEnd],
                     ],
                 ]
             ],
@@ -87,19 +99,29 @@ class AjaxController extends AppController {
             $date->setTimezone(new DateTimeZone('Asia/Tokyo'));
             $end = $date->format('Y-m-d\TH:i:s\Z');
 
+            $FavH = new FavoriteHelper(new \Cake\View\View());
+            $EventH = new EventHelper(new \Cake\View\View());
+
             $data[] = array(
                 'id' => $event->id,
                 'title'=>$event->title,
                 'start'=> $start,
                 'end' => $end,
+                'range' => $event->event_range,
                 'allDay' => $allday,
                 'details' => $event->details,
                 'place' => $event->place,
                 'color' => $bgcolor,
                 'url' => $url,
                 'favorites' => $favorites,
+                'FavHTML' => $FavH->showFavorite($event),
+                'showIsAllday' => $EventH->showIsAllday($event),
+                'showIsPrivate' => $EventH->showIsPrivate($event),
             );
         }
-    echo json_encode($data);
+
+        $this->set('events', $data);
+        $this->set('_serialize', ['events']);
+
     }
 }

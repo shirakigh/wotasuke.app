@@ -40,20 +40,20 @@ class EventsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Users', 'Favorites'],
-            'conditions' => [
-                'Events.user_id' => $this->Auth->user('id'),
-            ],
-            'order' => [
-                'Events.start' => 'asc'
-            ],
-            'limit' => 10,
-        ];
-        $events = $this->paginate($this->Events);
-
-        $this->set(compact('events'));
-        $this->set('_serialize', ['events']);
+        // $this->paginate = [
+        //     'contain' => ['Users', 'Favorites'],
+        //     'conditions' => [
+        //         'Events.user_id' => $this->Auth->user('id'),
+        //     ],
+        //     'order' => [
+        //         'Events.start' => 'asc'
+        //     ],
+        //     'limit' => 10,
+        // ];
+        // $events = $this->paginate($this->Events);
+        //
+        // $this->set(compact('events'));
+        // $this->set('_serialize', ['events']);
     }
 
     /**

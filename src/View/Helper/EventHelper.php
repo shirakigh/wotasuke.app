@@ -126,4 +126,13 @@ class EventHelper extends Helper {
         ]);
         return $string;
     }
+
+    public function showIsAllday($event) {
+        return $event->is_allday ? __('is_allday') : '';
+    }
+
+    public function showIsPrivate($event) {
+        return $event->is_private ? __('is_private') : '';
+    }
+
 }

@@ -1,38 +1,21 @@
 <?php
 /* @var $this \Cake\View\View */
+echo $this->Html->script('https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js', array('inline' => false));
 $this->extend('/Layout/twitterbootstrap/dashboard');
 echo $this->element('calendar');
 ?>
-<table class="table table-striped" cellpadding="0" cellspacing="0">
-    <tbody>
-      <div id="events-list"></div>
-    </tbody>
-</table>
 
-<table class="table table-striped" cellpadding="0" cellspacing="0">
-    <tbody>
-        <?php foreach ($events as $event): ?>
-        <tr>
-          <th colspan="5"><?= h($event->title) ?><?= $this->Favorite->showFavorite($event); ?></th>
+<div id="events-list"></div>
+  <table ng-app="myApp" ng-controller="eventCtrl" class="table table-striped" cellpadding="0" cellspacing="0">
+      <tbody>
+        <tr ng-repeat-start="event in events">
+          <th colspan="5">{{event.title}}<span ng-bind-html="event.FavHTML"></span></th>
         </tr>
-        <tr>
-          <td><?= h($event->event_range) ?></td>
-          <td><?= h($event->place) ?></td>
-          <td class="hidden-xs"><?= $event->is_allday ? __('is_allday') : ''; ?></td>
-          <td class="hidden-xs"><?= $event->is_private ? __('is_private') : ''; ?></td>
-          <td class=" actions">
-            <?= $this->Html->link('', ['action' => 'edit', $event->id], ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
-            <?= $this->Form->postLink('', ['action' => 'delete', $event->id], ['confirm' => __('Are you sure you want to delete # {0}?', $event->title), 'title' => __('Delete'), 'class' => 'btn btn-default glyphicon glyphicon-trash']) ?>
-          </td>
+        <tr ng-repeat-end>
+          <td>{{event.range}}</td>
+          <td>{{event.place}}</td>
+          <td class="hidden-xs">{{event.showIsAllday}}</td>
+          <td class="hidden-xs">{{event.showIsPrivate}}</td>
         </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
-<div class="paginator">
-    <ul class="pagination">
-        <?= $this->Paginator->prev('< ' . __('previous')) ?>
-        <?= $this->Paginator->numbers(['before' => '', 'after' => '']) ?>
-        <?= $this->Paginator->next(__('next') . ' >') ?>
-    </ul>
-    <p><?= $this->Paginator->counter() ?></p>
-</div>
+      </tbody>
+  </table>
