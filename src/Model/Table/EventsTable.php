@@ -81,6 +81,12 @@ class EventsTable extends Table
             ->boolean('is_private')
             ->allowEmpty('is_private');
 
+        $validator
+            ->allowEmpty('url');
+
+        $validator
+            ->allowEmpty('feeling');
+
         return $validator;
     }
 

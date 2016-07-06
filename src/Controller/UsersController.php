@@ -130,10 +130,8 @@ class UsersController extends AppController
                 if(!empty($this->request->data['up_img']['name'])) {
                     // Imagesテーブルに保存
                     $result = $this->ImageProcess->saveImages($this->request->data['image'], $this->Auth->user('id'));
-                    if ($result) {
-                        $this->request->session()->write('user_icon', THUMBNAIL_PATH.$result->name);
-                    }
                 }
+                $this->_writeIconSession($user);
 
                 //セッションに登録
                 $this->Flash->success(__('user_added'));
@@ -210,11 +208,13 @@ class UsersController extends AppController
 
     protected function _writeIconSession($user)
     {
-        // 名前が空だったらNOIMAGE画像をセットする
-        if (empty($user['images'])) {
-            $this->request->session()->write('user_icon', THUMBNAIL_PATH.'noimage_user.png');
-        } else {
+        if(!empty($user['image'])) {
+            $this->request->session()->write('user_icon', THUMBNAIL_PATH.$user['image']['name']);
+        } else if(!empty($user['images'])) {
             $this->request->session()->write('user_icon', THUMBNAIL_PATH.$user['images'][0]['name']);
+        } else {
+            // 画像がアップロードされていなかったらnoimage画像をセットする
+            $this->request->session()->write('user_icon', THUMBNAIL_PATH.'noimage_user.png');
         }
     }
 }

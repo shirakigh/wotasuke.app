@@ -446,6 +446,9 @@ msgstr "ドラッグでイベントを作成"
 msgid "end"
 msgstr "終了日時"
 
+msgid "feeling"
+msgstr "感想など"
+
 msgid "is_allday"
 msgstr "終日"
 
@@ -469,6 +472,9 @@ msgstr "開始日時"
 
 msgid "title"
 msgstr "タイトル"
+
+msgid "url"
+msgstr "URL"
 
 # Favorites -----------------------
 msgid "Add Favorite"

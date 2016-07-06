@@ -33,6 +33,10 @@ $this->extend('/Layout/twitterbootstrap/dashboard');
             <td><?= h($event->end) ?></td>
         </tr>
         <tr>
+            <td><?= __('url') ?></td>
+            <td><?= $this->Text->autoLinkUrls(h($event->url), ['target' => '_blank']); ?></td>
+        </tr>
+        <tr>
             <td><?= __('detail') ?></td>
             <td><?= $this->Text->autoParagraph(h($event->detail)); ?></td>
         </tr>
@@ -43,6 +47,10 @@ $this->extend('/Layout/twitterbootstrap/dashboard');
         <tr>
             <td><?= __('is_private') ?></td>
             <td><?= $event->is_private ? __('Yes') : __('No'); ?></td>
+        </tr>
+        <tr>
+            <td><?= __('feeling') ?></td>
+            <td><?= $this->Text->autoParagraph(h($event->feeling)); ?></td>
         </tr>
         <tr>
             <td><?= __('created') ?></td>

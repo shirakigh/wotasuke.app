@@ -114,6 +114,20 @@ class EventHelper extends Helper {
         return $string;
     }
 
+    public function inputUrl($obj) {
+        $string = $obj->Form->input('url', [
+            'label' => __('url'),
+        ]);
+        return $string;
+    }
+
+    public function inputFeeling($obj) {
+        $string = $obj->Form->input('feeling', [
+            'label' => __('feeling'),
+        ]);
+        return $string;
+    }
+
     public function inputFavorites($obj, $favorite) {
         $string = $obj->Form->input('favorites._ids', [
             'options' => $favorite,

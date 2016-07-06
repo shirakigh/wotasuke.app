@@ -40,30 +40,41 @@ class AjaxController extends AppController {
         $rangeStart = date("Y-m-d H:i:s", $this->request->query('start'));
         $rangeEnd = date("Y-m-d H:i:s", $this->request->query('end'));
 
+        $conditions = [
+            'Events.user_id' => $id,
+            'OR' => [
+                [   //startもendも範囲内(通常の予定)
+                    ['Events.start >=' => $rangeStart],
+                    ['Events.end <=' => $rangeEnd],
+                ],
+                [   //startが範囲前でendが範囲内
+                    ['Events.start <=' => $rangeStart],
+                    ['Events.end >=' => $rangeStart],
+                    ['Events.end <=' => $rangeEnd],
+                ],
+                [   //startが範囲内でendが範囲以降
+                    ['Events.start >=' => $rangeStart],
+                    ['Events.start <=' => $rangeEnd],
+                    ['Events.end >=' => $rangeEnd],
+                ],
+                [   //startが範囲以前でendが範囲以降
+                    ['Events.start <=' => $rangeStart],
+                    ['Events.end >=' => $rangeEnd],
+                ],
+            ]
+        ];
+
+        // 自分のスケジュールかどうかで処理を変える
+        if ($id == $this->Auth->user('id')) {
+            $linkAction = '/events/view/';
+        } else {
+            // 自分のイベントでなければ非公開を除外する、リンク先を閲覧専用actionにする
+            $linkAction = '/events/display/';
+            $conditions[] = ['Events.is_private' => 0];
+        }
+
         $events = $this->Events->find('all',[
-            'conditions' => [
-                'Events.user_id' => $id,
-                'OR' => [
-                    [   //startもendも範囲内(通常の予定)
-                        ['Events.start >=' => $rangeStart],
-                        ['Events.end <=' => $rangeEnd],
-                    ],
-                    [   //startが範囲前でendが範囲内
-                        ['Events.start <=' => $rangeStart],
-                        ['Events.end >=' => $rangeStart],
-                        ['Events.end <=' => $rangeEnd],
-                    ],
-                    [   //startが範囲内でendが範囲以降
-                        ['Events.start >=' => $rangeStart],
-                        ['Events.start <=' => $rangeEnd],
-                        ['Events.end >=' => $rangeEnd],
-                    ],
-                    [   //startが範囲以前でendが範囲以降
-                        ['Events.start <=' => $rangeStart],
-                        ['Events.end >=' => $rangeEnd],
-                    ],
-                ]
-            ],
+            'conditions' => $conditions,
             'contain' => ['Favorites'],
             'distinct' => ['Events.id'],
         ]);
@@ -87,12 +98,7 @@ class AjaxController extends AppController {
                 }
             }
 
-            // ログインユーザのイベントであればviewアクションへ、それ以外ならdisplayアクションへのリンクをセット
-            if ($id == $this->Auth->user('id')) {
-                $url = Router::url('/events/view/'.$event->id, true);
-            } else {
-                $url = Router::url('/events/display/'.$event->id, true);
-            }
+            $url = Router::url($linkAction.$event->id, true);
 
             $start = $event->start;
             $date = new DateTime($event->end, new DateTimeZone('UTC'));

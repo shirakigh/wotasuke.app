@@ -24,7 +24,9 @@ $this->element('select2');
     echo $this->Event->inputEnd($this);
     echo $this->Event->inputPlace($this);
     echo $this->Event->inputFavorites($this, $favorites);
+    echo $this->Event->inputUrl($this);
     echo $this->Event->inputDetail($this);
+    echo $this->Event->inputFeeling($this);
     ?>
 </fieldset>
 <?= $this->Form->button(__("Save")); ?>
