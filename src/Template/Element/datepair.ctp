@@ -46,7 +46,7 @@ $('#eventRange .time.end').on('selectTime', setDate);
 $('#eventRange .date.end').on('change.dp', setDate);
 
 // 終日にチェックされたら時間のテキストボックスを非表示にする
-$('#is-allday').on('change', changeTimeVisible);
+$('#is-allday').on('change', changeAllday);
 
 // start, end を更新する
 function setDate() {
@@ -56,10 +56,18 @@ function setDate() {
   $('input[name="end"]').val(end);
 }
 
-// 時間の入力テキストボックスの表示・非表示を切り替える
-function changeTimeVisible() {
+// 終日設定が切り替わったら：
+//   ・時間のテキストボックスに表示・非表示を切り替える
+//   ・終日で時間が未入力だったら初期値をセットする
+function changeAllday() {
   if ($('#is-allday').prop('checked')) {
       $('#eventRange .time').hide();
+      if ($('#eventRange .time.start').val().length == 0){
+        $('#eventRange .time.start').timepicker('setTime', '00:00');
+      }
+      if ($('#eventRange .time.end').val().length == 0){
+        $('#eventRange .time.end').timepicker('setTime', '23:59');
+      }
   } else {
       $('#eventRange .time').show();
   }
