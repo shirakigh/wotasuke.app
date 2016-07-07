@@ -21,7 +21,7 @@
         <li class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-bell-o"></i>
-                  <span class="label label-warning">7/7</span>
+                  <span class="label label-warning">7/8</span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
