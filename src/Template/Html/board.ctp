@@ -10,10 +10,10 @@ $this->extend('/Layout/twitterbootstrap/dashboard');
   <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: auto;"><div class="box-body chat" id="chat-box" style="overflow: hidden; width: auto; height: auto;">
     <!-- chat item -->
     <div class="item">
-      <img src="dist/img/user4-128x128.jpg" alt="user image" class="online">
+      <?= $this->Html->image('thumbnail/cb884fa1da8163a1957d79870fdbb8ea.jpeg', ['class' => 'online']); ?>
       <p class="message">
         <a href="#" class="name">
-          <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2016-07-07</small>
+          <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2016-07-08</small>
           しらき
         </a>
           WOTASUKE初版リリースしました！</br></br>
@@ -26,7 +26,18 @@ $this->extend('/Layout/twitterbootstrap/dashboard');
           　（´-`）.｡oO（カレンダーの日付をクリックしてイベントを追加できるといいなあ</br>
           　（´-`）.｡oO（イベントの「場所」をGoogle Mapsと連携できるといいなあ</br>
           　（´-`）.｡oO（イベントのチケット情報をもっと細かく管理できるといいなあ(ざっくり)</br>
-
+          　（´-`）.｡oO（他の人のイベントにコメントできたら面白いかなあ</br>
+          </br></br></br>
+          ちなみにヲタスケは下記の環境で動作確認を行っています。</br>
+          </br>
+          ・OS：Windows7/10, iOS(iPhone)</br>
+          ・ブラウザ：Google Chrome, Microsoft IE/Edge, Safari</br>
+          </br>
+          一応Firefoxも見てるんですけどFirefoxだと微妙にレイアウト崩れたりするみたいなのでできればFirefox以外での利用をおすすめします。</br>
+          あとiPhone5くらいのスマホディスプレイサイズでも快適に使える操作性を目指してます。</br>
+          スマホだとここが使いにくい！とかあればそちらも遠慮なくお知らせください！</br>
+          </br>
+          みなさま楽しいヲタライフを（　´ Д ｀）ﾉｼ
       </p>
     </div><!-- /.item -->
   </div><div class="slimScrollBar" style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 184.911px; background: rgb(0, 0, 0);"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div></div><!-- /.chat -->

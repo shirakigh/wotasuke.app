@@ -21,10 +21,10 @@ class UsersController extends AppController
     {
         $action = $this->request->params['action'];
 
-        // // The add and index actions are always allowed.
-        // if (in_array($action, ['index', 'add'])) {
-        //     return true;
-        // }
+        // The add and index actions are always allowed.
+        if (in_array($action, ['index'])) {
+            return true;
+        }
         // All other actions require an id.
         if (empty($this->request->params['pass'][0])) {
             return false;

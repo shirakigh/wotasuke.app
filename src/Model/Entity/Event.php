@@ -95,7 +95,11 @@ class Event extends Entity
     protected function _getEventRange()
     {
         if (!empty($this->_properties)) {
-            return $this->_properties['start'] . ' ～ ' . $this->_properties['end'];
+            if ($this->_properties['is_allday']) {
+                return date("Y-m-d", strtotime($this->_properties['start'])). '～' .date("Y-m-d", strtotime($this->_properties['end']));
+            } else {
+                return $this->_properties['start'] . ' ～ ' . $this->_properties['end'];
+            }
         } else {
             return null;
         }

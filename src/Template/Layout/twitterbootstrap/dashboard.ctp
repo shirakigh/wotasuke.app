@@ -16,10 +16,6 @@ $this->element('html_header');
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
-        <h1>
-          <?= $this->request->controller; ?>
-          <?= $this->request->action; ?>
-        </h1>
       </section>
       <?= $this->Flash->render() ?>
       <?= $this->Flash->render('auth') ?>

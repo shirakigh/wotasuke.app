@@ -311,7 +311,7 @@ msgid "List Favorites"
 msgstr "お気に入り一覧"
 
 msgid "List Users"
-msgstr "ユーザ一覧"
+msgstr "ゆかいななかまたち"
 
 msgid "New Event"
 msgstr "新しいイベント"

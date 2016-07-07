@@ -34,7 +34,7 @@ var eventRangeEl = document.getElementById('eventRange');
 var datepair = new Datepair(eventRangeEl);
 
 $(document).ready(function(){
-    changeTimeVisible();
+    changeAllday();
 });
 
 // Set Start
