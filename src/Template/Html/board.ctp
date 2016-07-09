@@ -13,7 +13,7 @@ $this->extend('/Layout/twitterbootstrap/dashboard');
       <?= $this->Html->image('thumbnail/cb884fa1da8163a1957d79870fdbb8ea.jpeg', ['class' => 'online']); ?>
       <p class="message">
         <a href="#" class="name">
-          <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2016-07-08</small>
+          <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2016-07-09</small>
           しらき
         </a>
           WOTASUKE初版リリースしました！</br></br>

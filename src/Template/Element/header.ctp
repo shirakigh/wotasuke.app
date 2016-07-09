@@ -21,7 +21,7 @@
         <li class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-bell-o"></i>
-                  <span class="label label-warning">7/8</span>
+                  <span class="label label-warning">7/9</span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
@@ -29,7 +29,7 @@
                     <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: auto;"><ul class="menu" style="overflow: hidden; width: 100%; height: auto;">
                       <li>
                         <a href="<?= $this->Url->build(['controller' => 'Html', 'action' => 'board']); ?>">
-                          <i class="fa fa-rocket text-aqua"></i> 2016-07-08 WOTASUKE リリースしました！
+                          <i class="fa fa-rocket text-aqua"></i> 2016-07-09 WOTASUKE リリースしました！
                         </a>
                       </li>
                     </ul><div class="slimScrollBar" style="width: 3px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; background: rgb(0, 0, 0);"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div></div>
