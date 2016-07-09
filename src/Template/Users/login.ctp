@@ -22,5 +22,4 @@
     </div>
     <?= $this->Form->end() ?>
 </div>
-<a href="#">パスワードを忘れたらこちら</a><br>
 <?= $this->Html->link(__('New User'), ['action' => 'add']) ?>
