@@ -34,4 +34,27 @@ class Favorite extends Entity
         '*' => true,
         'id' => false,
     ];
+
+    protected function _getBgcolor()
+    {
+        if (!empty($this->_properties)) {
+            if (empty($this->_properties['bgcolor'])) {
+                return '#3a87ad';
+            } else {
+                return $this->_properties['bgcolor'];
+            }
+        }
+    }
+
+    protected function _getNickname()
+    {
+        if (!empty($this->_properties)) {
+            if (empty($this->_properties['nickname'])) {
+                return $this->_properties['name'];
+            } else {
+                return $this->_properties['nickname'];
+            }
+        }
+    }
+
 }

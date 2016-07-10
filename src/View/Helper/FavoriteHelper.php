@@ -1,6 +1,7 @@
 <?php
 namespace App\View\Helper;
 use Cake\View\Helper;
+use Cake\Routing\Router;
 
 class FavoriteHelper extends Helper {
     public function inputName($obj) {
@@ -69,9 +70,16 @@ class FavoriteHelper extends Helper {
         $string = '';
         if (!empty($event->favorites)):
             foreach ($event->favorites as $favorites):
+                
+                if ($this->request->session()->read('Auth.User.id') == $event->user_id) {
+                    $action = 'view';
+                } else {
+                    $action = 'display';
+                }
+                $string .= "<a href=".Router::url(['controller' => 'Favorites', 'action' => $action, $favorites->id]).">";
                 $string .= "<span class='label margin' style='background-color:".h($favorites->bgcolor)."; color:".h($favorites->textcolor)."'>";
                 $string .= h($favorites->nickname);
-                $string .= "</span>";
+                $string .= "</span></a>";
             endforeach;
         else:
             if ($isShowMsg): $string = __("no_related_Favorites"); endif;
@@ -79,4 +87,16 @@ class FavoriteHelper extends Helper {
 
         return $string;
     }
+
+    public function showNickname($favorite) {
+        $string = '';
+        if (!empty($favorite)):
+            $string .= "<span class='label margin' style='background-color:".h($favorite->bgcolor)."; color:".h($favorite->textcolor)."'>";
+            $string .= h($favorite->nickname);
+            $string .= "</span>";
+        endif;
+
+        return $string;
+    }
+
 }
