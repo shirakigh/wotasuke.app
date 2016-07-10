@@ -69,6 +69,9 @@ class FavoritesTable extends Table
         $validator
             ->allowEmpty('bgcolor');
 
+        $validator
+            ->allowEmpty('textcolor');
+
         return $validator;
     }
 

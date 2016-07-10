@@ -492,6 +492,9 @@ msgstr "お気に入り"
 msgid "nickname"
 msgstr "ニックネーム"
 
+msgid "textcolor"
+msgstr "タグの文字色"
+
 # 共通フィールド -----------------------
 msgid "created"
 msgstr "作成日時"

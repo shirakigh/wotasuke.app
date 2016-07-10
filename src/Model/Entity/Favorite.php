@@ -16,6 +16,7 @@ use Cake\ORM\Entity;
  * @property string $bgcolor
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Event[] $events
+ * @property string $textcolor
  */
 class Favorite extends Entity
 {

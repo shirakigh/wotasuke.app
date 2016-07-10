@@ -1,7 +1,5 @@
 <?php
 //Bootstrap Color Picker
-// $this->prepend('css', $this->Html->css('/plugins/colorpicker/bootstrap-colorpicker.min'));
-// $this->prepend('scriptBottom', $this->Html->script('/plugins/colorpicker/bootstrap-colorpicker.min'));
 $this->prepend('css', $this->Html->css('/plugins/spectrum/spectrum'));
 $this->prepend('scriptBottom', $this->Html->script('/plugins/spectrum/spectrum'));
 ?>
@@ -11,12 +9,10 @@ $(function(){
   //color picker with addon
   $(".my-colorpicker").spectrum({
       showPalette: true,
-      <!-- togglePaletteOnly: true, -->
       cancelText: 'キャンセル',
       chooseText: '選択',
       togglePaletteMoreText: '他の色',
       togglePaletteLessText: 'パネルを閉じる',
-      color: $('#bgcolor').val(),
       preferredFormat: "hex",
       palette: [
           ["#000","#444","#666","#999","#ccc","#eee","#f3f3f3","#fff"],
@@ -28,13 +24,18 @@ $(function(){
           ["#900","#b45f06","#bf9000","#38761d","#134f5c","#0b5394","#351c75","#741b47"],
           ["#600","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
       ],
-      change: function(color) {
-          $('#bgcolor').val(color.toHexString());
-      },
-      beforeShow: function(color) {
-
-      }
   });
+
+  $(".my-colorpicker.bg").spectrum('set', $('#bgcolor').val());
+  $(".my-colorpicker.text").spectrum('set', $('#textcolor').val());
+
+  $(".my-colorpicker.bg").on('change.spectrum', function(e, tinycolor) {
+    $('#bgcolor').val(tinycolor.toHexString());
+  });
+  $(".my-colorpicker.text").on('change.spectrum', function(e, tinycolor) {
+    $('#textcolor').val(tinycolor.toHexString());
+  });
+
 });
 
 

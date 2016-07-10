@@ -49,11 +49,18 @@ class FavoriteHelper extends Helper {
         return $string;
     }
 
-    public function inputColorPicker($obj) {
+    public function inputColorPicker($obj, $name) {
         $string = $obj->Form->input('colorpicker', [
             'label' => false,
-            'class' => 'my-colorpicker',
-            'placeholder' => __('ph_bgcolor'),
+            'class' => 'my-colorpicker '.$name,
+        ]);
+        return $string;
+    }
+
+    public function inputTextcolor($obj) {
+        $string = $obj->Form->hidden('textcolor', [
+            'id' => 'textcolor',
+            'type' => 'text',
         ]);
         return $string;
     }
@@ -62,7 +69,7 @@ class FavoriteHelper extends Helper {
         $string = '';
         if (!empty($event->favorites)):
             foreach ($event->favorites as $favorites):
-                $string .= "<span class='label margin' style='background-color:".h($favorites->bgcolor)."'>";
+                $string .= "<span class='label margin' style='background-color:".h($favorites->bgcolor)."; color:".h($favorites->textcolor)."'>";
                 $string .= h($favorites->nickname);
                 $string .= "</span>";
             endforeach;
