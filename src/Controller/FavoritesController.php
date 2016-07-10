@@ -69,6 +69,23 @@ class FavoritesController extends AppController
     }
 
     /**
+     * Display method
+     *
+     * @param string|null $id Favorite id.
+     * @return \Cake\Network\Response|null
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function display($id = null)
+    {
+        $favorite = $this->Favorites->get($id, [
+            'contain' => ['Users', 'Events']
+        ]);
+
+        $this->set('favorite', $favorite);
+        $this->set('_serialize', ['favorite']);
+    }
+
+    /**
      * Add method
      *
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.

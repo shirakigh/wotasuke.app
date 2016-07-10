@@ -16,6 +16,7 @@ use Cake\ORM\Entity;
  * @property string $bgcolor
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Event[] $events
+ * @property string $textcolor
  */
 class Favorite extends Entity
 {
@@ -33,4 +34,27 @@ class Favorite extends Entity
         '*' => true,
         'id' => false,
     ];
+
+    protected function _getBgcolor()
+    {
+        if (!empty($this->_properties)) {
+            if (empty($this->_properties['bgcolor'])) {
+                return '#3a87ad';
+            } else {
+                return $this->_properties['bgcolor'];
+            }
+        }
+    }
+
+    protected function _getNickname()
+    {
+        if (!empty($this->_properties)) {
+            if (empty($this->_properties['nickname'])) {
+                return $this->_properties['name'];
+            } else {
+                return $this->_properties['nickname'];
+            }
+        }
+    }
+
 }

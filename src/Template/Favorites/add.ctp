@@ -13,7 +13,10 @@ $this->element('colorpicker');
     echo $this->Favorite->inputBirthday($this);
     echo $this->Form->label('bgcolor', __("bgcolor"));
     echo $this->Favorite->inputBgcolor($this);
-    echo $this->Favorite->inputColorPicker($this);
+    echo $this->Favorite->inputColorPicker($this, 'bg');
+    echo $this->Form->label('textcolor', __("textcolor"));
+    echo $this->Favorite->inputTextcolor($this);
+    echo $this->Favorite->inputColorPicker($this, 'text');
     ?>
 </fieldset>
 <?= $this->Form->button(__("Add")); ?>

@@ -42,11 +42,11 @@ $this->extend('/Layout/twitterbootstrap/dashboard');
         </tr>
         <tr>
             <td><?= __('is_allday') ?></td>
-            <td><?= $event->is_allday ? __('Yes') : __('No'); ?></td>
+            <td><?= $event->is_allday ? __('is_allday') : ''; ?></td>
         </tr>
         <tr>
             <td><?= __('is_private') ?></td>
-            <td><?= $event->is_private ? __('Yes') : __('No'); ?></td>
+            <td><?= $event->is_private ? __('is_private') : ''; ?></td>
         </tr>
         <tr>
             <td><?= __('feeling') ?></td>

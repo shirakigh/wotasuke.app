@@ -89,12 +89,18 @@ class AjaxController extends AppController {
             // 推しにイメージカラーが設定されていたら背景色にする
             if(empty($event->favorites[0])) {
                 $bgcolor = null;
+                $textcolor = null;
             } else {
                 $favorites = $event->favorites;
                 if (!is_null($event->favorites[0]->bgcolor)) {
                     $bgcolor = $event->favorites[0]->bgcolor;
                 } else {
                     $bgcolor = null;
+                }
+                if (!is_null($event->favorites[0]->textcolor)) {
+                    $textcolor = $event->favorites[0]->textcolor;
+                } else {
+                    $textcolor = null;
                 }
             }
 
@@ -118,6 +124,7 @@ class AjaxController extends AppController {
                 'details' => $event->details,
                 'place' => $event->place,
                 'color' => $bgcolor,
+                'textColor' => $textcolor,
                 'url' => $url,
                 'favorites' => $favorites,
                 'FavHTML' => $FavH->showFavorite($event),

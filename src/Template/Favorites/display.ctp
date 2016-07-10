@@ -45,21 +45,16 @@ $this->extend('/Layout/twitterbootstrap/dashboard');
                 <th><?= __('place') ?></th>
                 <th class="hidden-xs"><?= __('is_allday') ?></th>
                 <th class="hidden-xs"><?= __('is_private') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
             </tr>
             </thead>
             <tbody>
             <?php foreach ($favorite->events as $events): ?>
                 <tr>
                     <td><?= h($events->eventRange) ?></td>
-                    <td><?= $this->Html->link(h($events->title), ['controller' => 'Events', 'action' => 'view', $events->id]) ?></td>
+                    <td><?= $this->Html->link(h($events->title), ['controller' => 'Events', 'action' => 'display', $events->id]) ?></td>
                     <td><?= h($events->place) ?></td>
                     <td class="hidden-xs"><?= $events->is_allday ? __('is_allday') : ''; ?></td>
                     <td class="hidden-xs"><?= $events->is_allday ? __('is_private') : ''; ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link('', ['controller' => 'Events', 'action' => 'edit', $events->id], ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
-                        <?= $this->Form->postLink('', ['controller' => 'Events', 'action' => 'delete', $events->id], ['confirm' => __('Are you sure you want to delete # {0}?', $events->id), 'title' => __('Delete'), 'class' => 'btn btn-default glyphicon glyphicon-trash']) ?>
-                    </td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
