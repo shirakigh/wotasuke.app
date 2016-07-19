@@ -397,6 +397,12 @@ msgstr "（　´ Д ｀）＜そのうちGoogleMapと連動したいぽ"
 msgid "ph_range"
 msgstr "イベント期間を選択"
 
+msgid "ph_ticket"
+msgstr "良席祈願"
+
+msgid "ph_ticket_info"
+msgstr "チケ申し込み情報など"
+
 msgid "ph_title"
 msgstr "イベント名"
 
@@ -452,8 +458,20 @@ msgstr "感想など"
 msgid "is_allday"
 msgstr "終日"
 
+msgid "is_join"
+msgstr "参戦！"
+
 msgid "is_private"
 msgstr "非公開"
+
+msgid "no_allday"
+msgstr "not 終日"
+
+msgid "no_join"
+msgstr "不参加"
+
+msgid "no_private"
+msgstr "公開"
 
 msgid "no_related_Favorites"
 msgstr "お気に入りは登録されていません"
@@ -469,6 +487,12 @@ msgstr "関連するお気に入り"
 
 msgid "start"
 msgstr "開始日時"
+
+msgid "ticket"
+msgstr "チケット"
+
+msgid "ticket_info"
+msgstr "チケット情報"
 
 msgid "title"
 msgstr "タイトル"

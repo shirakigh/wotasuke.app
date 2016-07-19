@@ -21,13 +21,16 @@
         <li class="dropdown notifications-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-bell-o"></i>
-            <span class="label label-warning">7/9</span>
+            <span class="label label-warning">7/19</span>
           </a>
           <ul class="dropdown-menu">
             <li>
               <!-- inner menu: contains the actual data -->
               <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: auto;"><ul class="menu" style="overflow: hidden; width: 100%; height: auto;">
                 <li>
+                  <a href="<?= $this->Url->build(['controller' => 'Html', 'action' => 'board']); ?>">
+                    <i class="fa fa-rocket text-aqua"></i> 2016-07-19 WOTASUKE 更新情報(ver-1.1.1)
+                  </a>
                   <a href="<?= $this->Url->build(['controller' => 'Html', 'action' => 'board']); ?>">
                     <i class="fa fa-rocket text-aqua"></i> 2016-07-09 WOTASUKE リリースしました！
                   </a>

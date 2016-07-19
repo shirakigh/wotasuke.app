@@ -102,14 +102,28 @@ class EventHelper extends Helper {
 
     public function inputIsAllday($obj) {
         $string = $obj->Form->input('is_allday', [
-            'label' => __('is_allday'),
+            'label' => false,
+            'class' => 'toggle-bootstrap',
+            'data-toggle' => 'toggle',
+            'data-on' =>  __('is_allday'),
+            'data-off' =>  __('no_allday'),
+            'templates' => [
+                'checkboxContainer' => '{{content}}',
+            ]
         ]);
         return $string;
     }
 
     public function inputIsPrivate($obj) {
         $string = $obj->Form->input('is_private', [
-            'label' => __('is_private'),
+            'label' => false,
+            'class' => 'toggle-bootstrap',
+            'data-toggle' => 'toggle',
+            'data-on' =>  __('is_private'),
+            'data-off' =>  __('no_private'),
+            'templates' => [
+                'checkboxContainer' => '{{content}}',
+            ]
         ]);
         return $string;
     }
@@ -124,6 +138,36 @@ class EventHelper extends Helper {
     public function inputFeeling($obj) {
         $string = $obj->Form->input('feeling', [
             'label' => __('feeling'),
+        ]);
+        return $string;
+    }
+
+    public function inputIsJoin($obj) {
+        $string = $obj->Form->input('is_join', [
+            'label' => false,
+            'class' => 'toggle-bootstrap',
+            'data-toggle' => 'toggle',
+            'data-on' =>  __('is_join'),
+            'data-off' =>  __('no_join'),
+            'templates' => [
+                'checkboxContainer' => '{{content}}',
+            ]
+        ]);
+        return $string;
+    }
+
+    public function inputTicket($obj) {
+        $string = $obj->Form->input('ticket', [
+            'label' => __('ticket'),
+            'placeholder' => __('ph_ticket'),
+        ]);
+        return $string;
+    }
+
+    public function inputTicketInfo($obj) {
+        $string = $obj->Form->input('ticket_info', [
+            'label' => __('ticket_info'),
+            'placeholder' => __('ph_ticket_info'),
         ]);
         return $string;
     }
@@ -147,6 +191,10 @@ class EventHelper extends Helper {
 
     public function showIsPrivate($event) {
         return $event->is_private ? __('is_private') : '';
+    }
+
+    public function showIsJoin($event) {
+        return $event->is_join ? '<span class="badge bg-red margin-r-5"><i class="fa fa-star-o"></i></span>' : '';
     }
 
 }
