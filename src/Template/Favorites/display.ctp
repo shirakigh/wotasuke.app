@@ -44,17 +44,15 @@ $this->extend('/Layout/twitterbootstrap/dashboard');
                 <th><?= __('title') ?></th>
                 <th><?= __('place') ?></th>
                 <th class="hidden-xs"><?= __('is_allday') ?></th>
-                <th class="hidden-xs"><?= __('is_private') ?></th>
             </tr>
             </thead>
             <tbody>
             <?php foreach ($favorite->events as $events): ?>
                 <tr>
                     <td><?= h($events->eventRange) ?></td>
-                    <td><?= $this->Html->link(h($events->title), ['controller' => 'Events', 'action' => 'display', $events->id]) ?></td>
+                    <td><?= $this->Event->showIsJoin($events) ?><?= $this->Html->link(h($events->title), ['controller' => 'Events', 'action' => 'display', $events->id]) ?></td>
                     <td><?= h($events->place) ?></td>
                     <td class="hidden-xs"><?= $events->is_allday ? __('is_allday') : ''; ?></td>
-                    <td class="hidden-xs"><?= $events->is_allday ? __('is_private') : ''; ?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

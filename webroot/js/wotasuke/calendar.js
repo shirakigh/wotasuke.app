@@ -45,6 +45,7 @@ function generateCalendar($scope, $sce) {
         $.each(events,
           function(index, row) {
             events[index]['FavHTML'] = $sce.trustAsHtml(row['FavHTML']);
+            events[index]['showIsJoin'] = $sce.trustAsHtml(row['showIsJoin']);
         });
 
         $scope.events =  events;

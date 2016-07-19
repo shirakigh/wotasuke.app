@@ -18,9 +18,6 @@ $this->extend('/Layout/twitterbootstrap/dashboard');
               <b><?= __('name') ?></b> <a class="pull-right"><?= h($user->name) ?></a>
             </li>
             <li class="list-group-item">
-              <b><?= __('login_account') ?></b> <a class="pull-right"><?= h($user->login_account) ?></a>
-            </li>
-            <li class="list-group-item">
               <b><?= __('created') ?></b> <a class="pull-right"><?= h($user->created) ?></a>
             </li>
           </ul>
@@ -43,8 +40,6 @@ $this->extend('/Layout/twitterbootstrap/dashboard');
                  style="display:none;"
                  data-val="<?= $this->url->build('/ajax/feed/'.$user->id.'/', true); ?>">
             </div>
-
-
           </div><!-- /.tab-pane -->
           <div class="tab-pane" id="timeline">
             <!-- The timeline -->

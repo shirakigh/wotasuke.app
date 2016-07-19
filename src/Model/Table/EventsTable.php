@@ -87,6 +87,15 @@ class EventsTable extends Table
         $validator
             ->allowEmpty('feeling');
 
+        $validator
+            ->boolean('is_join');
+
+        $validator
+            ->allowEmpty('ticket');
+
+        $validator
+            ->allowEmpty('ticket_info');
+
         return $validator;
     }
 

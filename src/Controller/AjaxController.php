@@ -130,6 +130,7 @@ class AjaxController extends AppController {
                 'FavHTML' => $FavH->showFavorite($event),
                 'showIsAllday' => $EventH->showIsAllday($event),
                 'showIsPrivate' => $EventH->showIsPrivate($event),
+                'showIsJoin' => $EventH->showIsJoin($event),
             );
         }
 

@@ -20,6 +20,9 @@ use Cake\ORM\Entity;
  * @property bool $is_private
  * @property string $url
  * @property string $feeling
+ * @property bool $is_join
+ * @property string $ticket
+ * @property string $ticket_info
  */
 class Event extends Entity
 {
