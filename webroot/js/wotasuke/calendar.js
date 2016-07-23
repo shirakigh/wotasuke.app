@@ -1,7 +1,7 @@
 // $(document).ready(function () {
 function generateCalendar($scope, $sce) {
   $('#calendar').fullCalendar({
-    axisFormat: 'H:mm',     // スロットの時間の書式
+    axisFormat: 'H:mm', // スロットの時間の書式
     columnFormat: {
       week: 'D[(]ddd[)]',
     },
@@ -16,7 +16,7 @@ function generateCalendar($scope, $sce) {
     },
     height: 650,
     lang: 'ja',
-    timeFormat: 'H:mm',       // 時間の書式
+    timeFormat: 'H:mm', // 時間の書式
     timezone: 'Asia/Tokyo',
     ignoreTimezone: false,
     weekMode: 'variable',
@@ -26,7 +26,7 @@ function generateCalendar($scope, $sce) {
     selectHelper: true,
 
     // events: $('#api-url').data('val'),
-    events: function (start, end, timezone, callback) {
+    events: function(start, end, timezone, callback) {
       $.ajax({
         url: $('#api-url').data('val'),
         dataType: 'json',
@@ -35,20 +35,20 @@ function generateCalendar($scope, $sce) {
           start: start.unix(),
           end: end.unix(),
         },
-      }).fail(function () {
+      }).fail(function() {
         // データが取得できなかった場合はカレンダー下の一覧もクリアする
-        $scope.events =  {};
+        $scope.events = {};
         $scope.$apply();
-      }).done(function (doc) {
+      }).done(function(doc) {
         events = $(doc).attr('events');
         // カレンダー下部に表示用
         $.each(events,
           function(index, row) {
             events[index]['FavHTML'] = $sce.trustAsHtml(row['FavHTML']);
             events[index]['showIsJoin'] = $sce.trustAsHtml(row['showIsJoin']);
-        });
+          });
 
-        $scope.events =  events;
+        $scope.events = events;
         $scope.$apply();
         callback(events);
       });
@@ -93,12 +93,12 @@ function generateCalendar($scope, $sce) {
     //   $('#calendar').fullCalendar('unselect');
     // },
 
-  });   //-----fullCalendar
+  }); //-----fullCalendar
 
 }
 
 var app = angular.module('myApp', []);
-app.controller('eventCtrl', function ($scope, $sce) {
+app.controller('eventCtrl', function($scope, $sce) {
   generateCalendar($scope, $sce);
 });
 

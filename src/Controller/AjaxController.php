@@ -32,54 +32,44 @@ class AjaxController extends AppController {
     */
     public function feed($id=null)
     {
-        // 今回はJSONのみを返すためViewのレンダーを無効化
-        // $this->autoRender = false;
         $this->response->type('json');
         $this->request->allowMethod(['get']);
         $this->loadModel('Events');
-        $rangeStart = date("Y-m-d H:i:s", $this->request->query('start'));
-        $rangeEnd = date("Y-m-d H:i:s", $this->request->query('end'));
 
-        $conditions = [
-            'Events.user_id' => $id,
-            'OR' => [
-                [   //startもendも範囲内(通常の予定)
-                    ['Events.start >=' => $rangeStart],
-                    ['Events.end <=' => $rangeEnd],
-                ],
-                [   //startが範囲前でendが範囲内
-                    ['Events.start <=' => $rangeStart],
-                    ['Events.end >=' => $rangeStart],
-                    ['Events.end <=' => $rangeEnd],
-                ],
-                [   //startが範囲内でendが範囲以降
-                    ['Events.start >=' => $rangeStart],
-                    ['Events.start <=' => $rangeEnd],
-                    ['Events.end >=' => $rangeEnd],
-                ],
-                [   //startが範囲以前でendが範囲以降
-                    ['Events.start <=' => $rangeStart],
-                    ['Events.end >=' => $rangeEnd],
-                ],
-            ]
-        ];
+        $options['rangeStart'] = date("Y-m-d H:i:s", $this->request->query('start'));
+        $options['rangeEnd'] = date("Y-m-d H:i:s", $this->request->query('end'));
+        $options['id'] = $id;
 
         // 自分のスケジュールかどうかで処理を変える
         if ($id == $this->Auth->user('id')) {
-            $linkAction = '/events/view/';
+            $options['isLoginUser'] = true;
         } else {
-            // 自分のイベントでなければ非公開を除外する、リンク先を閲覧専用actionにする
-            $linkAction = '/events/display/';
-            $conditions[] = ['Events.is_private' => 0];
+            $options['isLoginUser'] = false;
         }
 
-        $events = $this->Events->find('all',[
-            'conditions' => $conditions,
-            'contain' => ['Favorites'],
-            'distinct' => ['Events.id'],
-        ]);
+        $events = $this->Events->find('byRange',$options);
+        $data = $this->_generateFullCalendarOptions($events, $id);
+
+        $this->set('events', $data);
+        $this->set('_serialize', ['events']);
+    }
+
+    /**
+    * generateFullCalendarOptions method
+    * eventモデルと対象ユーザのIDを渡すとFUllcalendarのオプション形式にして返す
+    *
+    * @return array()
+    */
+    private function _generateFullCalendarOptions($events, $id)
+    {
+        // 自分のスケジュールかどうかでリンク先を変える
+        if ($id == $this->Auth->user('id')) {
+            $linkAction = '/events/view/';
+        } else {
+            $linkAction = '/events/display/';
+        }
+
         foreach($events as $event) {
-            // 終日フラグの設定
             if($event->is_allday == 1) {
                 $allday = true;
             } else {
@@ -134,8 +124,8 @@ class AjaxController extends AppController {
             );
         }
 
-        $this->set('events', $data);
-        $this->set('_serialize', ['events']);
-
+        return $data;
     }
+
+
 }

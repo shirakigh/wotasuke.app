@@ -66,12 +66,10 @@ class EventsTable extends Table
             ->allowEmpty('detail');
 
         $validator
-            ->dateTime('start')
-            ->allowEmpty('start');
+            ->dateTime('start');
 
         $validator
-            ->dateTime('end')
-            ->allowEmpty('end');
+            ->dateTime('end');
 
         $validator
             ->boolean('is_allday')
@@ -96,6 +94,14 @@ class EventsTable extends Table
         $validator
             ->allowEmpty('ticket_info');
 
+        $validator
+            ->requirePresence('start_date', 'create')
+            ->notEmpty('start_date');
+
+        $validator
+            ->requirePresence('end_date', 'create')
+            ->notEmpty('end_date');
+
         return $validator;
     }
 
@@ -109,6 +115,49 @@ class EventsTable extends Table
                 }
 
             ]);
+        return $query;
+    }
+
+    public function findByRange(\Cake\ORM\Query $query, array $options)
+    {
+        $user_id = $options['id'];
+        $rangeStart = $options['rangeStart'];
+        $rangeEnd = $options['rangeEnd'];
+        $isLoginUser = $options['isLoginUser'];
+
+        $query
+            ->contain([
+                'Favorites',
+            ])
+            ->where([
+                'Events.user_id' => $user_id,
+                'OR' => [
+                    [   //startもendも範囲内(通常の予定)
+                        ['Events.start >=' => $rangeStart],
+                        ['Events.end <=' => $rangeEnd],
+                    ],
+                    [   //startが範囲前でendが範囲内
+                        ['Events.start <=' => $rangeStart],
+                        ['Events.end >=' => $rangeStart],
+                        ['Events.end <=' => $rangeEnd],
+                    ],
+                    [   //startが範囲内でendが範囲以降
+                        ['Events.start >=' => $rangeStart],
+                        ['Events.start <=' => $rangeEnd],
+                        ['Events.end >=' => $rangeEnd],
+                    ],
+                    [   //startが範囲以前でendが範囲以降
+                        ['Events.start <=' => $rangeStart],
+                        ['Events.end >=' => $rangeEnd],
+                    ],
+                ]
+            ])
+            ->distinct([
+                'Events.id'
+            ]);
+        if (!$isLoginUser) {
+            $query->where(['Events.is_private' => 0]);
+        }
         return $query;
     }
 
